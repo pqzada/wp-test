@@ -1,0 +1,366 @@
+				*
+					margin 0
+					padding 0
+					font-family 'Open Sans', sans-serif
+				/*
+					General
+						*/
+				#adminmenu
+					#toplevel_page_wpcf7
+						display none
+				.todo
+					min-width 320px
+					.margin-up
+						margin-top 10px
+					.margin-down
+						margin-bottom 10px
+					.margin-left
+						margin-left 10px
+					.margin-right
+						margin-right 10px
+					.margin-up-down
+						margin-top 10px
+						margin-bottom 10px
+					.padding-left-right
+						padding 0 20px
+					.padding-cero
+						padding 0
+					a:focus
+						outline none
+					table
+						width 100%
+						tr:first-child
+							background #0A96C7
+							color #fff
+							font-size 12pt
+							font-weight bold
+						tr:nth-child(2),
+						tr:nth-child(4),
+						tr:nth-child(6)
+							background #E5E5E5
+							font-size 10pt
+							color #7F7D7E
+							// td:nth-child(2),
+							// td:nth-child(4)
+					/*
+						Head
+							*/
+					#head
+						border-bottom 1px solid #D1D1D1
+						background #AB0303
+						padding-top 20px
+						.navbar
+							margin-bottom 0
+							ul.dropdown-menu
+								li
+									a
+										color #000
+							.navbar-collapse
+								li.active
+									box-shadow 0 5px 0 0 #0197CA
+						.nav-justified > li
+							width auto
+						.navbar-collapse.collapse
+							margin-top 13px
+						.nav-justified > .dropdown .dropdown-menu
+							top 27px
+						.nav
+							li
+								a
+									color #fff
+									font-size 12pt
+									font-family: 'Oswald', sans-serif;
+									padding 4px 11px
+									display block
+									&:hover,
+									&:focus
+										background-color transparent
+										box-shadow 0 5px 0 0 #0197CA
+						.nav li:hover ul
+							display block
+						.navbar-toggle
+							background-color #25458a
+							.icon-bar
+								background-color #fff
+					h2.titulo
+						color #00428C
+						font-size 18pt
+						font-weight 300
+					#slide-home
+						#slide
+							.img-slide
+								// max-width none
+								width 100%
+								min-height 200px
+							.contenido-slide
+								background rgba(0, 0, 0, .35)
+								bottom 0
+								max-width 314px
+								padding 0 17px
+								position absolute
+								top 0
+								.titulo
+									// color #3C3E3D
+									color #fff
+									font-size 25pt
+									span
+										color #0197CA
+										font-weight bold
+								.texto
+									// color #3C3E3D
+									color #fff
+									font-size 12pt
+							ol.carousel-indicators
+								// background rgba(0, 0, 0, .35)
+								bottom 0
+								left 0
+								margin-bottom 0
+								margin-left 0
+								padding 8px
+								width 100%
+								li
+									background-color #fff
+							.carousel-indicators .active
+								background-color #02AFEB
+								border 0
+					#relevantes
+						background #AB0303
+						color #fff
+						font-size 14pt
+						padding 20px
+						text-transform uppercase
+						font-weight 600
+						a
+							color #fff
+							text-decoration none
+							&:hover
+								color #DDD
+					/*
+						Contenido
+							*/
+					#contenido
+						/*
+							Home
+							*/
+						#home
+							float right
+							padding-right 0
+							#servicios
+								img
+									width 100%
+								.fondo-texto
+									max-width 395px
+									position absolute
+									right 0
+							#ofertas
+								img
+									width 100%
+								.fondo-texto
+									position absolute
+							.servicios_bloque,
+							.ofertas_bloque
+								min-height 198px
+								.enunciado
+									max-width 271px
+									position relative
+									z-index 5
+									a
+										color #898989
+										display block
+										text-decoration none
+										h2
+											color #0098CA
+											font-family "Lato", sans-serif
+											font-size 18.05pt
+											font-weight 700
+											text-transform uppercase
+										h3
+											color #626262
+											font-size 12pt
+											font-family "Lato", sans-serif
+											text-transform uppercase
+										span
+											color #898989
+											font-size 12pt
+											font-family "Lato", sans-serif
+							/*
+								Page
+									*/
+							.interior
+								.contenido-pagina
+									h2
+										color #2F3545
+										font-size 14pt
+										text-transform uppercase
+									p
+										color #444444
+										font-size 10pt
+							#tabla
+								margin-top 20px
+								table
+									width 100%
+									tr.encabezado
+										background #0A96C7
+										padding 15px
+										td
+											padding 7px
+											font-size 11pt
+											color #fff
+											font-weight normal
+									tr
+										border-top 0
+										border 1px solid #dedede
+										color #555555
+										td
+											padding-top 5px
+											padding-bottom 5px
+											a
+												color #555555
+										td:first-child
+											padding 0 20px
+									tr:nth-child(2),
+									tr:nth-child(4),
+									tr:nth-child(6)
+										background #fff
+										font-size 11pt
+							.table-responsive
+								h4
+									color #000
+									font-size 8pt
+									border-bottom 1px solid #E1E1E1
+									vertical-align top
+									font-weight normal
+								// .ficha-tecnica
+								// 	span.titulo
+						/*
+									tr
+										background none
+										td
+											color #000
+											font-size 8pt
+											border-bottom 1px solid #E1E1E1
+											vertical-align top
+											font-weight normal
+											&:first-child
+												padding 3px 0
+												width 155px
+											&:nth-child(2)
+												border-left 2px solid #CCCCCC
+												padding-left 5px
+												width 376px
+							Sidebar
+							*/
+						#sidebar
+							border-right 1px solid #dedede
+							padding 0
+							.menu-sidebar
+								background #0A96C7
+								min-height 186px
+								ul
+									width 100%
+									li
+										padding 6px 10px
+										list-style none
+										&:active
+											background #0580AA
+										a
+											color #fff
+											display block
+											font-size 12pt
+											padding 0 20px
+											text-decoration none
+										&:hover
+											background #0580AA
+							.titulo
+								h2
+									font-size 24pt
+									font-family 'Lato', sans-serif
+									font-weight 700
+									color #0098CA
+								strong
+									color #7A7977
+									font-family 'Lato', sans-serif
+								span
+									font-weight 300
+									color #7A7977
+									font-family 'Lato', sans-serif
+							.ofertas
+								padding 20px 0 15px 14px
+								li.vacantes
+									list-style-image url('/wp-content/themes/theme-master/images/lateral_icono_flecha.png')
+									a
+										border-bottom 1px solid
+										color #595959
+										font-family 'Lato', sans-serif
+										font-size 10pt
+										font-weight 400
+										line-height 45px
+										text-decoration none
+										text-transform uppercase
+										&:hover
+											color #0098CA
+							.titulo,
+							.ofertas
+								border-bottom 1px solid #dedede
+					/*
+						Page
+							*/
+					.page
+						h2
+							color #00428C
+							font-size 18pt
+							font-weight 500
+					/*
+						Pie
+							*/
+					footer
+						color #6D6D6D
+						font-family "Lato", sans-serif
+						font-size 10pt
+						min-height 150px
+						text-transform uppercase
+						h2
+							color #006184
+							font-size 11pt
+							font-weight bold
+						a
+							color #7A7977
+							text-decoration none
+							&:hover
+								color #CDCDCD
+						.foot
+							.bloque_redessociales,
+							.bloque_acceso
+								display inline-block
+								vertical-align top
+								width 100px
+							.acceso
+								a
+									color #555555
+									font-size 9pt
+									text-transform none
+					.creador
+						a
+							color #7C7C7D
+							// font-weight bold
+							font-size 8pt
+							text-decoration none
+							&:hover
+								color #9D9D9D
+				&.page-id-2,
+				&.page-id-5,
+				&.page-id-8,
+				&.page-id-12
+					.contenido-pagina
+						h2
+							display none
+				&.page-id-28
+					.todo
+						#contenido
+							#sidebar
+								.menu-sidebar
+									ul
+										li
+											a
+												font-size 11pt
+				@require 'responsive.styl'

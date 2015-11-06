@@ -1,0 +1,441 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+/*
+					General
+						*/
+#adminmenu #toplevel_page_wpcf7 {
+  display: none;
+}
+.todo {
+  min-width: 320px;
+/*
+						Head
+							*/
+/*
+						Contenido
+							*/
+/*
+						Page
+							*/
+/*
+						Pie
+							*/
+}
+.todo .margin-up {
+  margin-top: 10px;
+}
+.todo .margin-down {
+  margin-bottom: 10px;
+}
+.todo .margin-left {
+  margin-left: 10px;
+}
+.todo .margin-right {
+  margin-right: 10px;
+}
+.todo .margin-up-down {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.todo .padding-left-right {
+  padding: 0 20px;
+}
+.todo .padding-cero {
+  padding: 0;
+}
+.todo a:focus {
+  outline: none;
+}
+.todo table {
+  width: 100%;
+}
+.todo table tr:first-child {
+  background: #0a96c7;
+  color: #fff;
+  font-size: 12pt;
+  font-weight: bold;
+}
+.todo table tr:nth-child(2),
+.todo table tr:nth-child(4),
+.todo table tr:nth-child(6) {
+  background: #e5e5e5;
+  font-size: 10pt;
+  color: #7f7d7e;
+}
+.todo #head {
+  border-bottom: 1px solid #d1d1d1;
+  background: #ab0303;
+  padding-top: 20px;
+}
+.todo #head .navbar {
+  margin-bottom: 0;
+}
+.todo #head .navbar ul.dropdown-menu li a {
+  color: #000;
+}
+.todo #head .navbar .navbar-collapse li.active {
+  box-shadow: 0 5px 0 0 #0197ca;
+}
+.todo #head .nav-justified > li {
+  width: auto;
+}
+.todo #head .navbar-collapse.collapse {
+  margin-top: 13px;
+}
+.todo #head .nav-justified > .dropdown .dropdown-menu {
+  top: 27px;
+}
+.todo #head .nav li a {
+  color: #fff;
+  font-size: 12pt;
+  font-family: 'Oswald', sans-serif;
+  padding: 4px 11px;
+  display: block;
+}
+.todo #head .nav li a:hover,
+.todo #head .nav li a:focus {
+  background-color: transparent;
+  box-shadow: 0 5px 0 0 #0197ca;
+}
+.todo #head .nav li:hover ul {
+  display: block;
+}
+.todo #head .navbar-toggle {
+  background-color: #25458a;
+}
+.todo #head .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.todo h2.titulo {
+  color: #00428c;
+  font-size: 18pt;
+  font-weight: 300;
+}
+.todo #slide-home #slide .img-slide {
+  width: 100%;
+  min-height: 200px;
+}
+.todo #slide-home #slide .contenido-slide {
+  background: rgba(0,0,0,0.35);
+  bottom: 0;
+  max-width: 314px;
+  padding: 0 17px;
+  position: absolute;
+  top: 0;
+}
+.todo #slide-home #slide .contenido-slide .titulo {
+  color: #fff;
+  font-size: 25pt;
+}
+.todo #slide-home #slide .contenido-slide .titulo span {
+  color: #0197ca;
+  font-weight: bold;
+}
+.todo #slide-home #slide .contenido-slide .texto {
+  color: #fff;
+  font-size: 12pt;
+}
+.todo #slide-home #slide ol.carousel-indicators {
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 8px;
+  width: 100%;
+}
+.todo #slide-home #slide ol.carousel-indicators li {
+  background-color: #fff;
+}
+.todo #slide-home #slide .carousel-indicators .active {
+  background-color: #02afeb;
+  border: 0;
+}
+.todo #relevantes {
+  background: #ab0303;
+  color: #fff;
+  font-size: 14pt;
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.todo #relevantes a {
+  color: #fff;
+  text-decoration: none;
+}
+.todo #relevantes a:hover {
+  color: #ddd;
+}
+.todo #contenido #home {
+  float: right;
+  padding-right: 0;
+/*
+								Page
+									*/
+}
+.todo #contenido #home #servicios img {
+  width: 100%;
+}
+.todo #contenido #home #servicios .fondo-texto {
+  max-width: 395px;
+  position: absolute;
+  right: 0;
+}
+.todo #contenido #home #ofertas img {
+  width: 100%;
+}
+.todo #contenido #home #ofertas .fondo-texto {
+  position: absolute;
+}
+.todo #contenido #home .servicios_bloque,
+.todo #contenido #home .ofertas_bloque {
+  min-height: 198px;
+}
+.todo #contenido #home .servicios_bloque .enunciado,
+.todo #contenido #home .ofertas_bloque .enunciado {
+  max-width: 271px;
+  position: relative;
+  z-index: 5;
+}
+.todo #contenido #home .servicios_bloque .enunciado a,
+.todo #contenido #home .ofertas_bloque .enunciado a {
+  color: #898989;
+  display: block;
+  text-decoration: none;
+}
+.todo #contenido #home .servicios_bloque .enunciado a h2,
+.todo #contenido #home .ofertas_bloque .enunciado a h2 {
+  color: #0098ca;
+  font-family: "Lato", sans-serif;
+  font-size: 18.05pt;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.todo #contenido #home .servicios_bloque .enunciado a h3,
+.todo #contenido #home .ofertas_bloque .enunciado a h3 {
+  color: #626262;
+  font-size: 12pt;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+}
+.todo #contenido #home .servicios_bloque .enunciado a span,
+.todo #contenido #home .ofertas_bloque .enunciado a span {
+  color: #898989;
+  font-size: 12pt;
+  font-family: "Lato", sans-serif;
+}
+.todo #contenido #home .interior .contenido-pagina h2 {
+  color: #2f3545;
+  font-size: 14pt;
+  text-transform: uppercase;
+}
+.todo #contenido #home .interior .contenido-pagina p {
+  color: #444;
+  font-size: 10pt;
+}
+.todo #contenido #home #tabla {
+  margin-top: 20px;
+}
+.todo #contenido #home #tabla table {
+  width: 100%;
+}
+.todo #contenido #home #tabla table tr.encabezado {
+  background: #0a96c7;
+  padding: 15px;
+}
+.todo #contenido #home #tabla table tr.encabezado td {
+  padding: 7px;
+  font-size: 11pt;
+  color: #fff;
+  font-weight: normal;
+}
+.todo #contenido #home #tabla table tr {
+  border-top: 0;
+  border: 1px solid #dedede;
+  color: #555;
+}
+.todo #contenido #home #tabla table tr td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.todo #contenido #home #tabla table tr td a {
+  color: #555;
+}
+.todo #contenido #home #tabla table tr td:first-child {
+  padding: 0 20px;
+}
+.todo #contenido #home #tabla table tr:nth-child(2),
+.todo #contenido #home #tabla table tr:nth-child(4),
+.todo #contenido #home #tabla table tr:nth-child(6) {
+  background: #fff;
+  font-size: 11pt;
+}
+.todo #contenido #home .table-responsive h4 {
+  color: #000;
+  font-size: 8pt;
+  border-bottom: 1px solid #e1e1e1;
+  vertical-align: top;
+  font-weight: normal;
+}
+.todo #contenido #sidebar {
+  border-right: 1px solid #dedede;
+  padding: 0;
+}
+.todo #contenido #sidebar .menu-sidebar {
+  background: #0a96c7;
+  min-height: 186px;
+}
+.todo #contenido #sidebar .menu-sidebar ul {
+  width: 100%;
+}
+.todo #contenido #sidebar .menu-sidebar ul li {
+  padding: 6px 10px;
+  list-style: none;
+}
+.todo #contenido #sidebar .menu-sidebar ul li:active {
+  background: #0580aa;
+}
+.todo #contenido #sidebar .menu-sidebar ul li a {
+  color: #fff;
+  display: block;
+  font-size: 12pt;
+  padding: 0 20px;
+  text-decoration: none;
+}
+.todo #contenido #sidebar .menu-sidebar ul li:hover {
+  background: #0580aa;
+}
+.todo #contenido #sidebar .titulo h2 {
+  font-size: 24pt;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color: #0098ca;
+}
+.todo #contenido #sidebar .titulo strong {
+  color: #7a7977;
+  font-family: 'Lato', sans-serif;
+}
+.todo #contenido #sidebar .titulo span {
+  font-weight: 300;
+  color: #7a7977;
+  font-family: 'Lato', sans-serif;
+}
+.todo #contenido #sidebar .ofertas {
+  padding: 20px 0 15px 14px;
+}
+.todo #contenido #sidebar .ofertas li.vacantes {
+  list-style-image: url("/wp-content/themes/theme-master/images/lateral_icono_flecha.png");
+}
+.todo #contenido #sidebar .ofertas li.vacantes a {
+  border-bottom: 1px solid;
+  color: #595959;
+  font-family: 'Lato', sans-serif;
+  font-size: 10pt;
+  font-weight: 400;
+  line-height: 45px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.todo #contenido #sidebar .ofertas li.vacantes a:hover {
+  color: #0098ca;
+}
+.todo #contenido #sidebar .titulo,
+.todo #contenido #sidebar .ofertas {
+  border-bottom: 1px solid #dedede;
+}
+.todo .page h2 {
+  color: #00428c;
+  font-size: 18pt;
+  font-weight: 500;
+}
+.todo footer {
+  color: #6d6d6d;
+  font-family: "Lato", sans-serif;
+  font-size: 10pt;
+  min-height: 150px;
+  text-transform: uppercase;
+}
+.todo footer h2 {
+  color: #006184;
+  font-size: 11pt;
+  font-weight: bold;
+}
+.todo footer a {
+  color: #7a7977;
+  text-decoration: none;
+}
+.todo footer a:hover {
+  color: #cdcdcd;
+}
+.todo footer .foot .bloque_redessociales,
+.todo footer .foot .bloque_acceso {
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+}
+.todo footer .foot .acceso a {
+  color: #555;
+  font-size: 9pt;
+  text-transform: none;
+}
+.todo .creador a {
+  color: #7c7c7d;
+  font-size: 8pt;
+  text-decoration: none;
+}
+.todo .creador a:hover {
+  color: #9d9d9d;
+}
+.page-id-2 .contenido-pagina h2,
+.page-id-5 .contenido-pagina h2,
+.page-id-8 .contenido-pagina h2,
+.page-id-12 .contenido-pagina h2 {
+  display: none;
+}
+.page-id-28 .todo #contenido #sidebar .menu-sidebar ul li a {
+  font-size: 11pt;
+}
+@media (max-width: 1199px) {
+  .todo #contenido #home {
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .todo #head .nav li a {
+    text-align: left;
+  }
+  .todo #head .nav-justified .dropdown .dropdown-menu {
+    top: 0;
+  }
+  .todo #head .dropdown-menu {
+    float: none;
+    position: inherit;
+  }
+  .todo #slide-home #slide .img-slide {
+    height: 200px;
+    max-width: none;
+    width: auto;
+  }
+  .todo #contenido #home .servicios_bloque .enunciado,
+  .todo #contenido #home .ofertas_bloque .enunciado {
+    background: rgba(0,0,0,0.5);
+    padding: 0 40px;
+    position: inherit;
+    width: 100%;
+    height: 198px;
+  }
+  .todo #contenido #home .servicios_bloque .enunciado a,
+  .todo #contenido #home .ofertas_bloque .enunciado a {
+    color: #fff;
+  }
+  .todo #contenido #home .servicios_bloque .enunciado a h3,
+  .todo #contenido #home .ofertas_bloque .enunciado a h3 {
+    color: #fff;
+  }
+  .todo #contenido #home .servicios_bloque .enunciado a span,
+  .todo #contenido #home .ofertas_bloque .enunciado a span {
+    color: #fff;
+  }
+}

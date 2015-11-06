@@ -1,0 +1,10 @@
+@media( min-width: 1200px) {
+  #modal_postulaciones .modal-dialog {
+    width: 80%;
+  }
+}
+@media( max-width: 1199px) {
+  #modal_postulaciones .modal-dialog {
+    width: 98%;
+  }
+}
