@@ -1,3 +1,10 @@
+<style>
+#list-tecnologias li {
+	width: 20%;
+	float: left;
+}
+</style>
+
 <?php
 
 function itpt_load_content() {
@@ -7,7 +14,7 @@ function itpt_load_content() {
 	$nombre = '';
 	$tecnologias = [];
 
-	// Proceso POST
+	// Proceso POST - Nuevo
 	$result = itpt_handle_post();	
 
 	if($result !== true) {
@@ -17,6 +24,9 @@ function itpt_load_content() {
 		$error_msg = $result;
 
 	}
+
+	// Proceso POST - Eliminacion
+	itpt_handle_delete();
 
 	// Obtengo listado
 	$tecnologias = itpt_get_tecnologias();
@@ -29,7 +39,7 @@ function itpt_load_content() {
 	<form class="form-inline" method="post">
 		<div class="form-group <?php if($show_error === true) { echo "has-error"; } ?>">
 			<label class="sr-only" for="nombre">Nombre</label>
-			<input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre-tecnologia" value="<?php echo $nombre; ?>">			
+			<input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre-tecnologia" value="<?php echo $nombre; ?>" autofocus>			
 		</div>
 		<button type="submit" class="btn btn-primary" name="registrar-tecnologia">Registrar</button>
 
@@ -49,15 +59,30 @@ function itpt_load_content() {
 
 	<?php } else { ?>
 
-		<ul>
+		<ul id="list-tecnologias">
 			<?php foreach($tecnologias as $t) { ?>
 				<li>
-					<?php echo $t->nombre; ?>
+					<form method="post" onsubmit="return confirmDelete('<?php echo $t->nombre; ?>')">
+						<button type="submit" class="btn btn-danger btn-xs" name="eliminar-tecnologia">
+							<b>x</b>
+						</button>
+						<input type="hidden" name="id-tecnologia" value="<?php echo $t->id; ?>">
+						<span class="label label-default"><?php echo $t->nombre; ?></span>
+					</form>
 				</li>
 			<?php } ?>
 		</ul>
 
 	<?php } ?>
+
+	<script type="text/javascript">
+	function confirmDelete(nombre) {
+		if(confirm("¿Estas seguro que deseas eliminar la tecnología " + nombre +"?")) {
+			return true;
+		}
+		return false;
+	}
+	</script>
 
 <?php
 
@@ -113,6 +138,23 @@ function itpt_valid_post($nombre) {
 
 	return true;
 
+}
+
+/**
+ * Elimino tecnologia
+ *
+ */
+function itpt_handle_delete() {
+
+	global $wpdb;
+
+	if( isset($_POST['eliminar-tecnologia']) && $_POST['id-tecnologia'] != "" ) {
+
+		$wpdb->delete( 'itpeople_tecnologia', array( 'id' => $_POST['id-tecnologia'] ) );
+		
+	}
+
+	return true;
 }
 
 /**
