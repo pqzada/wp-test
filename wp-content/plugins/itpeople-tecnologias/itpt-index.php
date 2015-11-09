@@ -8,13 +8,16 @@ Author: pqzada@gmail.com
 
 require_once 'itpt-install.php';
 require_once 'itpt-admin-page.php';
+require_once 'itpt-meta-box.php';
 
 // Install
 register_activation_hook( __FILE__, 'jal_install' );
 register_activation_hook( __FILE__, 'jal_install_data' );
 
 // Add's
-add_action('admin_menu', 'tecnologias_setup_menu');
+add_action( 'admin_menu', 'tecnologias_setup_menu' );
+add_action( 'add_meta_boxes_ofertalaboral', 'itpt_meta_boxes' );
+add_action( 'save_post', 'itpt_save_meta_box_tecnologias', 10, 2 );
 
 // Functions
 
@@ -23,18 +26,16 @@ add_action('admin_menu', 'tecnologias_setup_menu');
  */
 function tecnologias_setup_menu() {
 
-	add_menu_page( 'Administración de Tecnologías', 'Tecnologías', 'manage_options', 'tecnologias', 'init' );
+	add_menu_page( 'Administración de Tecnologías', 'Tecnologías', 'edit_others_posts', 'tecnologias', 'init' );
 
 }
 
 /**
  * Funcion inicial
  */
-function init() {
+function init() {	
 
-	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'No tienes suficientes permisos para acceder a esta pagina.' ) );
-	}
+	wp_register_style( 'itptStyle', plugins_url('itpt-style.css', __FILE__) );
 
 	itpt_load_content();
 
