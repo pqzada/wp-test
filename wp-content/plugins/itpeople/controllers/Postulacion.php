@@ -74,6 +74,7 @@
 				'cb'              => '<input type="checkbox" />',
 				'title'           => __( 'Titulo' ),
 				'date'            => __( 'Date' ),
+				'tecnologias'	  => __( 'Tecnologías' ),
 				'q_postulaciones' => __(' Cantidad Postulaciones '),
 				'postulaciones'   => __( 'Postulaciones' ),
 			);
@@ -97,6 +98,18 @@
 
 				case 'postulaciones' :
 					echo '<a href="javascript:void(null);" data-id="'.$id_oferta.'" class="ver_postulaciones button button-info button-large">Ver Postulaciones</a>';
+					break;
+
+				case 'tecnologias':
+					$post_meta = get_post_custom($post_id);
+					$post_meta_tecnologias = "";
+					if( isset( $post_meta['tecnologias'] ) ) {
+						$post_meta_tecnologias = unserialize( $post_meta['tecnologias'][0] );
+						echo implode(", ", $post_meta_tecnologias);
+					} else {
+						echo "-";
+					}
+					
 					break;
 
 				default :
