@@ -285,27 +285,37 @@
 }
 .todo #contenido #sidebar .menu-sidebar {
   background: #0a96c7;
-  min-height: 186px;
+  /*min-height: 186px;*/
 }
 .todo #contenido #sidebar .menu-sidebar ul {
   width: 100%;
+  padding-bottom: 10px;
 }
 .todo #contenido #sidebar .menu-sidebar ul li {
-  padding: 6px 10px;
+  padding: 0px 10px;
   list-style: none;
 }
 .todo #contenido #sidebar .menu-sidebar ul li:active {
-  background: #0580aa;
+  background: #0580aa;  
 }
 .todo #contenido #sidebar .menu-sidebar ul li a {
   color: #fff;
   display: block;
-  font-size: 12pt;
-  padding: 0 20px;
   text-decoration: none;
+  border-bottom: 1px dotted #70C3DE;
+  padding-left: 5px;
+  padding-bottom: 0px;
+  line-height: 35px;  
+  font-size: 14px;
 }
-.todo #contenido #sidebar .menu-sidebar ul li:hover {
+.todo #contenido #sidebar .menu-sidebar ul li:hover, 
+.todo #contenido #sidebar .menu-sidebar ul li.current-menu-item {
   background: #0580aa;
+}
+
+.todo #contenido #sidebar .menu-sidebar ul li:hover a,
+.todo #contenido #sidebar .menu-sidebar ul li.current-menu-item a{
+  border-bottom: 1px solid #0580aa;
 }
 .todo #contenido #sidebar .titulo h2 {
   font-size: 24pt;
@@ -394,9 +404,9 @@
 .page-id-12 .contenido-pagina h2 {
   display: none;
 }
-.page-id-28 .todo #contenido #sidebar .menu-sidebar ul li a {
+/*.page-id-28 .todo #contenido #sidebar .menu-sidebar ul li a {
   font-size: 11pt;
-}
+}*/
 @media (max-width: 1199px) {
   .todo #contenido #home {
     margin-bottom: 15px;

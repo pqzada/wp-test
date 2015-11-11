@@ -6,8 +6,9 @@
 				$eicc_id_mostrar = array(277,280,283,286,289);
 				if (in_array(get_the_id(), $eicc_id_mostrar))
 					echo '<div><a href="http://www.eiccoalition.org/" target="_blank"><img style="position:absolute; margin-top: -44px;" src="/wp-content/uploads/2015/06/EICC_logo.gif" width="112" height="39" alt="" /></a></div>';
+				
 				echo '<div class="menu-sidebar">';
-					echo get_field('menu', get_the_id());
+				echo 	get_field('menu', get_the_id());
 				echo '</div>';
 			}
 			elseif(is_single(get_the_id()))
