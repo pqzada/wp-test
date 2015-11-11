@@ -59,6 +59,9 @@
 					});
 				}
 			});
+
+			add_action( 'restrict_manage_posts', array($this, 'restrict_ofertalaboral_by_tecnologia') );
+			add_filter( 'posts_where' , array($this,'posts_where_tecnologia') );
 		}
 
 		public function script_enqueuer() {
@@ -318,6 +321,44 @@
 				// header('Location: /');
 				// exit();
 			}
+		}
+
+		public function restrict_ofertalaboral_by_tecnologia() {
+
+			global $wpdb;
+
+			$sql = "SELECT nombre FROM itpeople_tecnologia ORDER BY nombre ASC";
+			$res = $wpdb->get_col($sql);
+			?>
+
+			<select name="tecnologia_restrict_ofertalaboral" id="tecnologia">
+				<option value="">Todas las tecnologías</option>
+				<?php foreach($res as $t) { ?>
+				<option value="<?php echo esc_attr($t); ?>" <?php if(isset($_GET['tecnologia_restrict_ofertalaboral']) && !empty($_GET['tecnologia_restrict_ofertalaboral']) ) selected($_GET['tecnologia_restrict_ofertalaboral'], $t); ?>>
+					<?php echo esc_attr($t); ?>
+				</option>
+				<?php } ?>
+			</select>
+			<?php
+		}
+			
+
+		public function posts_where_tecnologia( $where) {
+
+			if( is_admin() ) {
+
+		        global $wpdb;       
+
+		        if ( isset( $_GET['tecnologia_restrict_ofertalaboral'] ) && !empty( $_GET['tecnologia_restrict_ofertalaboral'] )) {
+
+		            $tecnologia = esc_attr($_GET['tecnologia_restrict_ofertalaboral']);
+		            $where .= " AND ID IN (SELECT post_id FROM " . $wpdb->postmeta ." WHERE meta_key='tecnologias' AND meta_value LIKE '%$tecnologia%' )";
+		        } 
+		        
+		    } 
+
+    		return $where;
+
 		}
 	}
 	?>
