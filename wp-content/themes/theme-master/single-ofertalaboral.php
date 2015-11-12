@@ -43,24 +43,32 @@
 					<hr>
 					<div class="table-reponsive">
 						<!-- <div class="ficha-tecnica"> -->
+						<?php if(get_field('sueldo')) { ?>
 							<div class="col-sm-12 margin-up-down">
 								<h4>Sueldo</h4>
 							</div>
 							<div class="col-sm-12 margin-up-down">
 								<?php echo get_field('sueldo'); ?>
 							</div>
+						<?php } ?>
+
+						<?php if(get_field('descripción')) { ?>
 							<div class="col-sm-12 margin-up-down">
 								<h4>Descripción</h4>
 							</div>
 							<div class="col-sm-12 margin-up-down">
 								<?php echo get_field('descripción'); ?>
 							</div>
+						<?php } ?>
+
+						<?php if(get_field('requerimientos')) { ?>
 							<div class="col-sm-12 margin-up-down">
 								<h4>Requerimientos</h4>
 							</div>
 							<div class="col-sm-12 margin-up-down">
 								<?php echo get_field('requerimientos'); ?>
 							</div>
+						<?php } ?>
 						<!-- </div> -->
 					</div>
 					<div class="text-center">
