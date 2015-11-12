@@ -449,3 +449,47 @@
     color: #fff;
   }
 }
+
+@media (max-width: 375px) {
+
+  /* Homepage */
+  .todo #slide-home #slide .contenido-slide {
+    max-width: 90%;
+    width: 90%;
+    left: 5%;
+  }
+
+  /* Header */
+  .todo #head .container {
+    margin: 0;
+    padding: 0;
+  }
+  .todo #head {
+      padding: 15px 5px 5px;
+  }
+  .todo #head .logo {
+      margin: 0;
+      padding: 0;
+      width: 80%;
+  }
+  .todo #head .navbar-toggle {
+      margin: 0;
+      position: absolute;
+      right: 0;
+      top: -35px;
+  }
+  .todo #head .contenido-header {
+      width: 100%;
+  }
+  .todo #head .contenido-header .navbar {
+    min-height: 10px;
+  }
+
+  /* Paginas (Tabla trabajadores transitorios) */
+  #tabla-transitorios {
+      width: 105%;
+      overflow-x: scroll;
+      margin-left: -5%;
+  }
+
+}
