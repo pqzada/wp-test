@@ -1318,3 +1318,11 @@ only screen and (                min-resolution: 2dppx) {
 
 	
 }
+
+.acf_postbox p.label label {
+    text-align: left;
+}
+
+.acf_postbox.no_box > .inside > .field {
+    padding: 5px 0px;
+}

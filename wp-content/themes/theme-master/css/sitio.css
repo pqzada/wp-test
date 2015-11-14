@@ -407,6 +407,41 @@
 /*.page-id-28 .todo #contenido #sidebar .menu-sidebar ul li a {
   font-size: 11pt;
 }*/
+
+/* Ofertas laborales */
+
+.row.oferta_laboral {
+    border-bottom: 1px solid #EFEFEF;
+    padding: 10px;
+}
+
+.row.oferta_laboral.gray {
+  background-color: #E8E8E8;
+}
+
+.row.oferta_laboral.orange {
+  background-color: #FFF6D4;
+}
+
+.row.oferta_laboral.white {
+  background-color: #FFF;
+}
+
+.oferta_laboral .title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.oferta_laboral .tecnologias {
+  font-size: 12px;
+}
+
+.oferta_laboral .info {
+  font-size: 12px;
+}
+
+
+
 @media (max-width: 1199px) {
   .todo #contenido #home {
     margin-bottom: 15px;
