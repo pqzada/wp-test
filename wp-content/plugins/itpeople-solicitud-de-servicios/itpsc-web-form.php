@@ -6,7 +6,7 @@ function itpsc_form_func() {
 	$error = itpsc_form_validate_post();
 
 
-	if(count($error) == 0) {
+	if(!is_null($error) && count($error) == 0) {
 		$result = itpsc_form_save_post();
 		if($result !== false) {
 			unset($_POST);
@@ -232,6 +232,8 @@ function itpsc_form_validate_post() {
 	    return $error;
 
 
+	} else {
+		return null;
 	}
 
 }
