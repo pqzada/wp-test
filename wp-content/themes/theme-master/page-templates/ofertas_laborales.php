@@ -29,6 +29,11 @@ Template Name: Ofertas Laborales
 							),
 						),
 					);
+
+					if(is_mobile()) {
+						$args['posts_per_page'] = 1000;
+					}
+
 					wp_reset_query();
 					$oferta_laboral = query_posts($args);
 
