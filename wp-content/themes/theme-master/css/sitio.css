@@ -294,6 +294,7 @@
 .todo #contenido #sidebar .menu-sidebar ul li {
   padding: 0px 10px;
   list-style: none;
+  background: url('/wp-content/themes/theme-master/images/right-20.png') no-repeat 98%;
 }
 .todo #contenido #sidebar .menu-sidebar ul li:active {
   background: #0580aa;  
@@ -310,7 +311,7 @@
 }
 .todo #contenido #sidebar .menu-sidebar ul li:hover, 
 .todo #contenido #sidebar .menu-sidebar ul li.current-menu-item {
-  background: #0580aa;
+  background: url('/wp-content/themes/theme-master/images/right-20.png') no-repeat 98% #0580aa;
 }
 
 .todo #contenido #sidebar .menu-sidebar ul li:hover a,

@@ -12,7 +12,7 @@ function itpt_load_content() {
 	// Variables
 	$show_error = false;
 	$nombre = '';
-	$tecnologias = [];
+	$tecnologias = array();
 
 	// Proceso POST - Nuevo
 	$result = itpt_handle_post();	
