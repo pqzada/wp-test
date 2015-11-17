@@ -36,7 +36,7 @@ function itpsc_form_func() {
 			<p>Completa el siguiente formulario con la información necesaria para solicitar servicios</p>
 
 			<div class="form-group <?php if(isset($error['perfil'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="perfil">Perfil del candidato requerido:</label>
+				<label class="control-label" for="perfil">Perfil del candidato requerido: (*)</label>
 				<textarea class="form-control" name="perfil" id="perfil" rows="2"><?php if(isset($_POST['perfil'])) {  echo $_POST['perfil']; } ?></textarea>
 				<?php if(isset($error['perfil'])) {  ?>
 				<span class="help-block"><?php echo $error['perfil']; ?></span>
@@ -44,7 +44,7 @@ function itpsc_form_func() {
 			</div>		
 
 			<div class="form-group <?php if(isset($error['ofrece'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="ofrece">Se ofrece:</label>
+				<label class="control-label" for="ofrece">Se ofrece: (*)</label>
 				<textarea class="form-control" name="ofrece" id="ofrece" rows="2"><?php if(isset($_POST['ofrece'])) {  echo $_POST['ofrece']; } ?></textarea>
 				<?php if(isset($error['ofrece'])) { ?>
 				<span class="help-block"><?php echo $error['ofrece']; ?></span>
@@ -52,7 +52,7 @@ function itpsc_form_func() {
 			</div>		
 
 			<div class="form-group <?php if(isset($error['tecnologias'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="tecnologias">Tecnologías o software a administrar, otros:</label>
+				<label class="control-label" for="tecnologias">Tecnologías o software a administrar, otros: (*)</label>
 				<input type="text" name="tecnologias" id="tecnologias" class="form-control" value="<?php if(isset($_POST['tecnologias'])) echo $_POST['tecnologias']; ?>">
 				<?php if(isset($error['tecnologias'])) { ?>
 				<span class="help-block"><?php echo $error['tecnologias']; ?></span>
@@ -68,7 +68,7 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['lugar_trabajo'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="lugar_trabajo">Ciudad y lugar de trabajo:</label>
+				<label class="control-label" for="lugar_trabajo">Ciudad y lugar de trabajo: (*)</label>
 				<input type="text" name="lugar_trabajo" id="lugar_trabajo" class="form-control" value="<?php if(isset($_POST['lugar_trabajo'])) echo $_POST['lugar_trabajo']; ?>">
 				<?php if(isset($error['lugar_trabajo'])) { ?>
 				<span class="help-block"><?php echo $error['lugar_trabajo']; ?></span>
@@ -108,7 +108,7 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['tipo_contrato'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="tipo_contrato">Tipo contrato y duración del trabajo:</label>
+				<label class="control-label" for="tipo_contrato">Tipo contrato y duración del trabajo: (*)</label>
 				<input type="text" name="tipo_contrato" id="tipo_contrato" class="form-control" value="<?php if(isset($_POST['tipo_contrato'])) echo $_POST['tipo_contrato']; ?>">
 				<?php if(isset($error['tipo_contrato'])) { ?>
 				<span class="help-block"><?php echo $error['tipo_contrato']; ?></span>
@@ -124,7 +124,7 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['liquido_ofrece'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="liquido_ofrece">Ingresos líquidos a ofrecer:</label>
+				<label class="control-label" for="liquido_ofrece">Ingresos líquidos a ofrecer: (*)</label>
 				<input type="text" name="liquido_ofrece" id="liquido_ofrece" class="form-control" value="<?php if(isset($_POST['liquido_ofrece'])) echo $_POST['liquido_ofrece']; ?>">
 				<?php if(isset($error['liquido_ofrece'])) { ?>
 				<span class="help-block"><?php echo $error['liquido_ofrece']; ?></span>
@@ -132,14 +132,16 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['contacto'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="contacto">Contacto empresa para este requerimiento:</label>
+				<label class="control-label" for="contacto">Contacto empresa para este requerimiento: (*)</label>
 				<input type="text" name="contacto" id="contacto" class="form-control" value="<?php if(isset($_POST['contacto'])) echo $_POST['contacto']; ?>">
 				<?php if(isset($error['contacto'])) { ?>
 				<span class="help-block"><?php echo $error['contacto']; ?></span>
 				<?php } ?>
 			</div>
 
-			<button type="submit" name="enviar_solititud" class="btn btn-primary pull-right">Enviar solicitud</button>	
+			<button type="submit" name="enviar_solititud" class="btn btn-primary pull-right">Enviar solicitud</button>
+
+			<p><em>(*) Campos obligatorios</em></p>	
 
 		</form>
 
@@ -188,15 +190,15 @@ function itpsc_form_validate_post() {
 	    if($_POST['tecnologias'] == "") {
 	    	$error['tecnologias'] = "Debes ingresar alguna tecnología o software a administrar";
 	    }
-
+/*
 	    if($_POST['funciones'] == "") {
 	    	$error['funciones'] = "Debes ingresar alguna función";
 	    }
-
+*/
 	    if($_POST['lugar_trabajo'] == "") {
 	    	$error['lugar_trabajo'] = "Debes ingresar la ciudad y/o lugar de trabajo ";
 	    }
-
+/*
 	    if($_POST['fecha_ingreso'] == "") {
 	    	$error['fecha_ingreso'] = "Debes ingresar la dispoibilidad y/o fecha de ingreso";
 	    }
@@ -212,15 +214,15 @@ function itpsc_form_validate_post() {
 	    if($_POST['nivel_profesional'] == "") {
 	    	$error['nivel_profesional'] = "Debes ingresar el nivel de profesional";
 	    }
-
+*/
 	    if($_POST['tipo_contrato'] == "") {
 	    	$error['tipo_contrato'] = "Debes ingresar el tipo de contrato y su duración";
 	    }
-
+/*
 	    if($_POST['jornada'] == "") {
 	    	$error['jornada'] = "Debes ingresar el tipo de jornada ";
 	    }
-
+*/
 	    if($_POST['liquido_ofrece'] == "") {
 	    	$error['liquido_ofrece'] = "Debes ingresar un monto líquido a ofrecer";
 	    }
