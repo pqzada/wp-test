@@ -173,4 +173,21 @@ function itpt_get_tecnologias() {
 
 }
 
+/**
+ * Obtiene tecnologia
+ *
+ * @return mixed[] Tecnologias
+ */
+function itpt_get_tecnologia($id) {
+
+	global $wpdb;
+
+	$sql = "SELECT * FROM itpeople_tecnologia WHERE id = $id";
+	$res = $wpdb->get_results($sql);
+
+	return $res;
+
+}
+
+
 ?>

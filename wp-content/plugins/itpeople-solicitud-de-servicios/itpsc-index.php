@@ -8,6 +8,7 @@ Author: pqzada@gmail.com
 
 require_once 'itpsc-install.php';
 require_once 'itpsc-web-form.php';
+require_once 'itpsc-admin-page.php';
 
 // Install
 register_activation_hook( __FILE__, 'itpsc_install' );
@@ -32,7 +33,15 @@ function solicitudes_setup_menu() {
  */
 function solicitudes_init() {	
 
-	echo "<h1>Solicitudes de Servicio</h1>";
+	if( isset($_POST['id_solicitud']) ) {
+
+		itpsc_load_detail($_POST['id_solicitud']);
+
+	} else {
+
+		itpsc_load_content();
+
+	}
 
 }
 
