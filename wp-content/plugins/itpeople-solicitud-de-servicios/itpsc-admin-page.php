@@ -149,6 +149,7 @@ function itpsc_load_content() {
 						<button class="btn" onclick="formVerSolicitud.submit()">
 							<i class="glyphicon glyphicon-search"></i> Ver
 						</button>
+						</form>
 					</td>
 				</tr>
 			<?php
@@ -167,7 +168,11 @@ function itpsc_load_content() {
 		                "visible": false,
 		                "searchable": true
 		    		}
-		    	]
+		    	],
+		    	"ordering": false,
+		    	"paging": false,
+		    	"info": false,
+		    	"searching": false		    
 		    });
 		} );
 	</script>
