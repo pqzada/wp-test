@@ -24,11 +24,11 @@ function itpsc_install() {
 	  lugar_trabajo varchar(100) NOT NULL,
 	  fecha_ingreso varchar(100) NOT NULL,
 	  formacion varchar(100) NOT NULL,
-	  anios_experiencia int NOT NULL,
+	  anios_experiencia varchar(100) NOT NULL,
 	  nivel_profesional varchar(100) NOT NULL,
 	  contrato_duracion varchar(100) NOT NULL,
 	  jornada varchar(100) NOT NULL,
-	  ingreso int NOT NULL,
+	  ingreso varchar(100) NOT NULL,
 	  contacto varchar(100) NOT NULL,
 	  UNIQUE KEY id (id)
 	) $charset_collate;";

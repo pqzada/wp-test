@@ -190,45 +190,81 @@ function itpsc_form_validate_post() {
 	    if($_POST['tecnologias'] == "") {
 	    	$error['tecnologias'] = "Debes ingresar alguna tecnología o software a administrar";
 	    }
-/*
+
 	    if($_POST['funciones'] == "") {
 	    	$error['funciones'] = "Debes ingresar alguna función";
-	    }
-*/
+	    } 
+
 	    if($_POST['lugar_trabajo'] == "") {
 	    	$error['lugar_trabajo'] = "Debes ingresar la ciudad y/o lugar de trabajo ";
+	    } else {
+	    	if(strlen($_POST['lugar_trabajo']) >= 100) {
+	    		$error['lugar_trabajo'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
-/*
+
 	    if($_POST['fecha_ingreso'] == "") {
 	    	$error['fecha_ingreso'] = "Debes ingresar la dispoibilidad y/o fecha de ingreso";
+	    } else {
+	    	if(strlen($_POST['fecha_ingreso']) >= 100) {
+	    		$error['fecha_ingreso'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
 
 	    if($_POST['formacion'] == "") {
 	    	$error['formacion'] = "Debes ingresar la formación mínima ";
+	    } else {
+	    	if(strlen($_POST['formacion']) >= 100) {
+	    		$error['formacion'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
 
 	    if($_POST['anios'] == "") {
 	    	$error['anios'] = "Debes ingresar los años de experiencia esperados ";
+	    } else {
+	    	if(strlen($_POST['anios']) >= 100) {
+	    		$error['anios'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
 
 	    if($_POST['nivel_profesional'] == "") {
 	    	$error['nivel_profesional'] = "Debes ingresar el nivel de profesional";
+	    } else {
+	    	if(strlen($_POST['nivel_profesional']) >= 100) {
+	    		$error['nivel_profesional'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
-*/
+
 	    if($_POST['tipo_contrato'] == "") {
 	    	$error['tipo_contrato'] = "Debes ingresar el tipo de contrato y su duración";
+	    } else {
+	    	if(strlen($_POST['tipo_contrato']) >= 100) {
+	    		$error['tipo_contrato'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
-/*
+
 	    if($_POST['jornada'] == "") {
 	    	$error['jornada'] = "Debes ingresar el tipo de jornada ";
+	    } else {
+	    	if(strlen($_POST['jornada']) >= 100) {
+	    		$error['jornada'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
-*/
+
 	    if($_POST['liquido_ofrece'] == "") {
 	    	$error['liquido_ofrece'] = "Debes ingresar un monto líquido a ofrecer";
+	    } else {
+	    	if(strlen($_POST['liquido_ofrece']) >= 100) {
+	    		$error['liquido_ofrece'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
 
 	    if($_POST['contacto'] == "") {
 	    	$error['contacto'] = "Debes ingresar un contacto para este requerimiento";
+	    } else {
+	    	if(strlen($_POST['contacto']) >= 100) {
+	    		$error['contacto'] = "Ingresa máximo 100 caracteres";
+	    	}
 	    }
 
 	    return $error;
