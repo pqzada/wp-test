@@ -15,7 +15,9 @@
 				$disponibilidad,
 				$renta_liquida,
 				$ext_curriculum,
-				$observaciones
+				$observaciones,
+				$aprobado,
+				$eliminado
 		;
 
 		public function __construct()

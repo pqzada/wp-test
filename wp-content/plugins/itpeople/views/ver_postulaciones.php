@@ -4,7 +4,7 @@
 			<h1>Postulaciones</h1>
 			<h2><?php echo $titulo ?></h2>
 
-			<table class="table">
+			<table class="table table-condensed" width="100%">
 				<tr>
 					<th>Nombre</th>
 					<th>Email</th>
@@ -14,9 +14,10 @@
 					<th>Renta Liquida</th>
 					<th>Observaciones</th>
 					<th>Curriculum</th>
+					<th>Acciones</th>
 				</tr>
 				<?php foreach ($postulaciones as $postulacion): ?>
-				<tr>
+				<tr class="tr-<?php echo $postulacion->id_postulacion; ?>">
 					<td><?php echo $postulacion->nombre ?></td>
 					<td><?php echo $postulacion->email ?></td>
 					<td><?php echo $postulacion->telefono ?></td>
@@ -24,10 +25,67 @@
 					<td><?php echo $postulacion->disponibilidad ?></td>
 					<td><?php echo $postulacion->renta_liquida ?></td>
 					<td><?php echo $postulacion->observaciones ?></td>
-					<td><a href="/private_files/<?php echo $postulacion->id_postulacion ?>.<?php echo $postulacion->ext_curriculum ?>" target="_BLANK">Ver</a></td>
+					<td>
+						<a href="/private_files/<?php echo $postulacion->id_postulacion ?>.<?php echo $postulacion->ext_curriculum ?>" target="_BLANK">
+							Ver
+						</a>
+					</td>
+					<td>
+						<a href="javascript:void(null);" data-id="<?php echo $postulacion->id_postulacion; ?>" class="aprobar_postulacion">Postular</a>
+						<a href="javascript:void(null);" data-id="<?php echo $postulacion->id_postulacion; ?>" class="eliminar_postulacion">Eliminar</a>
+					</td>
 				</tr>
 				<?php endforeach ?>
 			</table>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	
+	jQuery('.aprobar_postulacion').on('click', function(event) {
+
+		event.preventDefault();
+
+		var id = jQuery(this).attr('data-id');
+
+		if(confirm('¿Estas seguro que deseas aprobar esta postulación?')) {
+
+			jQuery.ajax({
+				url: postulaciones_ajax.ajaxurl,
+				type: 'POST',
+				dataType: 'html',
+				data: {
+					'action'  : 'aprobar_postulacion',
+					'id' : id
+				}
+			})
+
+		}
+	});
+
+	jQuery('.eliminar_postulacion').on('click', function(event) {
+
+		event.preventDefault();
+
+		var id = jQuery(this).attr('data-id');
+
+		if(confirm('¿Estas seguro que deseas eliminar esta postulación?')) {
+
+			jQuery.ajax({
+				url: postulaciones_ajax.ajaxurl,
+				type: 'POST',
+				dataType: 'html',
+				data: {
+					'action'  : 'eliminar_postulacion',
+					'id' : id
+				},
+				success: function(response) {
+					jQuery('.tr-' + id).hide();
+				}
+			})
+
+		}
+	});
+
+</script>

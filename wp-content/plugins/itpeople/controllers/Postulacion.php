@@ -62,6 +62,10 @@
 
 			add_action( 'restrict_manage_posts', array($this, 'restrict_ofertalaboral_by_tecnologia') );
 			add_filter( 'posts_where' , array($this,'posts_where_tecnologia') );
+
+			add_action( 'wp_ajax_aprobar_postulacion', array( $this, 'ajax_aprobar_postulacion' ) );
+			add_action( 'wp_ajax_desaprobar_postulacion', array( $this, 'ajax_desaprobar_postulacion' ) );
+			add_action( 'wp_ajax_eliminar_postulacion', array( $this, 'ajax_eliminar_postulacion' ) );
 		}
 
 		public function script_enqueuer() {
@@ -93,7 +97,7 @@
 
 			switch( $column ) {
 				case 'q_postulaciones' :
-					$sql             = 'SELECT * FROM tb_postulaciones_itpeople WHERE id_oferta = ' . $id_oferta;
+					$sql             = 'SELECT * FROM tb_postulaciones_itpeople WHERE eliminado = 0 AND id_oferta = ' . $id_oferta;
 					$postulaciones   = parent::model('Model_Postulacion')->get_custom($sql);
 					$q_postulaciones = count($postulaciones);
 					echo($q_postulaciones);
@@ -182,7 +186,7 @@
 		public function ajax_ver_postulaciones()
 		{
 			$id_oferta = $_POST['id_oferta'];
-			$sql = 'SELECT * FROM tb_postulaciones_itpeople WHERE id_oferta = ' . $id_oferta;
+			$sql = 'SELECT * FROM tb_postulaciones_itpeople WHERE eliminado = 0 AND id_oferta = ' . $id_oferta;
 			$data = array(
 				'id_oferta' => $id_oferta,
 				'titulo' => get_the_title($id_oferta),
@@ -358,6 +362,43 @@
 		    } 
 
     		return $where;
+
+		}
+
+		public function ajax_aprobar_postulacion() {
+			
+			global $wpdb;
+
+			$wpdb->update(
+				'tb_postulaciones_itpeople',
+				array("aprobado" => 1),
+				array("id_postulacion" => $_REQUEST['id'])
+			);
+
+		}
+
+		public function ajax_desaprobar_postulacion() {
+			
+			global $wpdb;
+
+			$wpdb->update(
+				'tb_postulaciones_itpeople',
+				array("aprobado" => 0),
+				array("id_postulacion" => $_REQUEST['id'])
+			);
+
+		}
+
+		public function ajax_eliminar_postulacion() {
+			
+			global $wpdb;
+
+			$wpdb->update(
+				'tb_postulaciones_itpeople',
+				array("eliminado" => 1),
+				array("id_postulacion" => $_REQUEST['id'])
+			);
+
 
 		}
 	}
