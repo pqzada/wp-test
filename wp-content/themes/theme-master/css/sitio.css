@@ -52,15 +52,15 @@
 .todo table {
   width: 100%;
 }
-.todo table tr:first-child {
+.todo #tabla-transitorios table tr:first-child {
   background: #0a96c7;
   color: #fff;
   font-size: 12pt;
   font-weight: bold;
 }
-.todo table tr:nth-child(2),
-.todo table tr:nth-child(4),
-.todo table tr:nth-child(6) {
+.todo #tabla-transitorios table tr:nth-child(2),
+.todo #tabla-transitorios table tr:nth-child(4),
+.todo #tabla-transitorios table tr:nth-child(6) {
   background: #e5e5e5;
   font-size: 10pt;
   color: #7f7d7e;

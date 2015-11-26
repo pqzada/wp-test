@@ -41,36 +41,105 @@
 					<hr>
 						<?php the_content(); ?>
 					<hr>
-					<div class="table-reponsive">
-						<!-- <div class="ficha-tecnica"> -->
-						<?php if(get_field('sueldo')) { ?>
-							<div class="col-sm-12 margin-up-down">
-								<h4>Sueldo</h4>
-							</div>
-							<div class="col-sm-12 margin-up-down">
-								<?php echo get_field('sueldo'); ?>
-							</div>
+
+					<div class="table-responsive">
+					<table class="table table-striped table-condensed" style="font-size: 12px;">
+						<tbody>
+
+						<?php if( get_field('descripción') ) { ?>
+							<tr>
+								<td valign="top">Descripción</td>
+								<td><?php echo get_field('descripción'); ?></td>
+							</tr>
 						<?php } ?>
 
-						<?php if(get_field('descripción')) { ?>
-							<div class="col-sm-12 margin-up-down">
-								<h4>Descripción</h4>
-							</div>
-							<div class="col-sm-12 margin-up-down">
-								<?php echo get_field('descripción'); ?>
-							</div>
+						<?php if( get_field('requerimientos') ) { ?>
+							<tr>
+								<td valign="top">Requerimientos</td>
+								<td><?php echo get_field('requerimientos'); ?></td>
+							</tr>
 						<?php } ?>
 
-						<?php if(get_field('requerimientos')) { ?>
-							<div class="col-sm-12 margin-up-down">
-								<h4>Requerimientos</h4>
-							</div>
-							<div class="col-sm-12 margin-up-down">
-								<?php echo get_field('requerimientos'); ?>
-							</div>
+						<?php if( get_field('sueldo') ) { ?>
+							<tr>
+								<td valign="top">Sueldo</td>
+								<td><?php echo get_field('sueldo'); ?></td>
+							</tr>
 						<?php } ?>
-						<!-- </div> -->
-					</div>
+
+						<?php if( get_field('tecnologias') ) { ?>
+							<tr>
+								<td valign="top">Tecnologías</td>
+								<td><?php echo implode(", ", get_field('tecnologias')); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('funciones') ) { ?>
+							<tr>
+								<td valign="top">Funciones</td>
+								<td><?php echo get_field('funciones'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('ciudad') ) { ?>
+							<tr>
+								<td valign="top">Ciudad</td>
+								<td><?php echo get_field('ciudad'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('disponibilidad') ) { ?>
+							<tr>
+								<td valign="top">Disponibilidad</td>
+								<td><?php echo get_field('disponibilidad'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('formacion_minima') ) { ?>
+							<tr>
+								<td valign="top">Formación mínima</td>
+								<td><?php echo get_field('formacion_minima'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('anios_experiencia') ) { ?>
+							<tr>
+								<td valign="top">Años experiencia</td>
+								<td><?php echo get_field('anios_experiencia'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('nivel_profesional') ) { ?>
+							<tr>
+								<td valign="top">Nivel profesional</td>
+								<td><?php echo get_field('nivel_profesional'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('tipo_contrato') ) { ?>
+							<tr>
+								<td valign="top">Tipo contrato</td>
+								<td><?php echo get_field('tipo_contrato'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('jornada') ) { ?>
+							<tr>
+								<td valign="top">Jornada</td>
+								<td><?php echo get_field('jornada'); ?></td>
+							</tr>
+						<?php } ?>
+
+						<?php if( get_field('fecha_cierre') ) { ?>
+							<tr>
+								<td valign="top">Fecha cierre</td>
+								<td><?php echo get_field('fecha_cierre'); ?></td>
+							</tr>
+						<?php } ?>
+						</tbody>
+					</table>	
+					</div>				
+
 					<div class="text-center">
 						<?php echo do_shortcode('[form_postulacion id_oferta='.get_the_ID().']') ?>
 					</div>
