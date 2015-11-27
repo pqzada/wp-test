@@ -24,7 +24,7 @@ add_shortcode('solicitud-servicios-form','itpsc_form_func');
  */
 function solicitudes_setup_menu() {
 
-	add_menu_page( 'Solicitudes de Servicio', 'Solicitudes de Servicio', 'edit_others_posts', 'solicitudes-servicio', 'solicitudes_init' );
+	add_menu_page( 'Solicitudes de Servicio', 'Solicitudes de Servicio', 'edit_others_posts', 'solicitudes-servicio', 'solicitudes_init', 'dashicons-clipboard', '8.2' );
 
 }
 

@@ -26,14 +26,14 @@ add_action( 'save_post', 'itpt_save_meta_box_tecnologias', 10, 2 );
  */
 function tecnologias_setup_menu() {
 
-	add_menu_page( 'Administración de Tecnologías', 'Tecnologías', 'edit_others_posts', 'tecnologias', 'init' );
+	add_menu_page( 'Administración de Tecnologías', 'Tecnologías', 'edit_others_posts', 'tecnologias', 'tecnologias_init', 'dashicons-editor-code', '8.3' );
 
 }
 
 /**
  * Funcion inicial
  */
-function init() {	
+function tecnologias_init() {	
 
 	wp_register_style( 'itptStyle', plugins_url('itpt-style.css', __FILE__) );
 

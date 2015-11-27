@@ -380,7 +380,7 @@ add_filter( 'optionsframework_menu', 'prefix_options_menu_filter' );
             'public' => true,
             'show_ui' => true, //Mostrar en el panel
             // 'menu_icon' => $this->helpers_get_dir(__FILE__).'../images/isotipo_garland_pneus.png',
-            'menu_icon' => get_template_directory_uri() . '/images/contenido_icono_ojo_1.png',
+            'menu_icon' => 'dashicons-megaphone',
             'hierarchical' => false,
             'rewrite' => true, //Reescribir los permalinks
             'query_var' => 'ofertalaboral',
