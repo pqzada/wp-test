@@ -5,8 +5,8 @@ function itpsc_load_detail($id) {
 	$s = itpsc_get_solicitud_servicio($id);
 
 ?>
-
-	<h1>Detalle solicitud #<?php echo $id; ?></h1>
+	<div class="wrap">
+	<h2>Detalle solicitud #<?php echo $id; ?></h2>
 
 	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button><br><br>
 
@@ -66,7 +66,7 @@ function itpsc_load_detail($id) {
 	</table>
 
 	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button>
-	
+	</div>
 
 <?php
 
@@ -83,23 +83,24 @@ function itpsc_load_content() {
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
 
-	<h1>Solicitudes de servicio</h1>
+	<div class="wrap">
+	<h2>Solicitudes de servicio</h2>
 
-	<table id="solicitudes" class="display" cellspacing="0" width="100%">
+	<table id="solicitudes" class="display table table-condensed" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th>Perfil</th>
 				<th>Se ofrece</th>
 				<th>Tecnologías</th>
 				<th>Funciones</th>
-				<th>Ciudad y lugar de trabajo</th>
-				<th>Disponibilidad, fecha de ingreso</th>
+				<th>Lugar de trabajo</th>
+				<th>Disponibilidad</th>
 				<th>Formación mínima</th>
 				<th>Años experiencia</th>
 				<th>Nivel profesional</th>
-				<th>Tipo contrato y duración del trabajo</th>
+				<th>Tipo contrato</th>
 				<th>Jornada</th>
-				<th>Ingresos líquidos a ofrecer</th>
+				<th>Ingresos</th>
 				<th>Contacto</th>
 				<th>Acciones</th>
 			</tr>
@@ -158,7 +159,7 @@ function itpsc_load_content() {
 		</tbody>
 
 	</table>
-
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#solicitudes').DataTable({

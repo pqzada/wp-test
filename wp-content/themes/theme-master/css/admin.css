@@ -8,3 +8,17 @@
     width: 98%;
   }
 }
+
+.display th {
+	font-size: 14px;
+	font-weight: 100 !important;
+	color: rgb(50, 55, 60);
+}
+
+.display td {
+	color: rgb(85, 85, 85);
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+}

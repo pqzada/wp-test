@@ -32,9 +32,10 @@ function itpt_load_content() {
 	$tecnologias = itpt_get_tecnologias();
 
 ?>
-	<h1>Tecnologías</h1>
+	<div class="wrap">
+	<h2>Tecnologías</h2>
 
-	<h3>Nueva tecnología</h3>
+	<h4>Nueva tecnología</h4>
 
 	<form class="form-inline" method="post">
 		<div class="form-group <?php if($show_error === true) { echo "has-error"; } ?>">
@@ -51,7 +52,7 @@ function itpt_load_content() {
 
 	</form>
 
-	<h3>Tecnologías registradas</h3>
+	<h4>Tecnologías registradas</h4>
 
 	<?php if(count($tecnologias) == 0) { ?>
 
@@ -75,6 +76,7 @@ function itpt_load_content() {
 
 	<?php } ?>
 
+	</div>
 	<script type="text/javascript">
 	function confirmDelete(nombre) {
 		if(confirm("¿Estas seguro que deseas eliminar la tecnología " + nombre +"?")) {
