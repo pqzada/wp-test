@@ -10,7 +10,7 @@ function itpsc_load_detail($id) {
 
 	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button><br><br>
 
-	<table class="table table-hover" cellspacing="0" width="100%">
+	<table class="table table-hover display" cellspacing="0" width="100%">
 		<tr>
 			<td valign="top"><b>Perfil</b></td>
 			<td><?php echo $s->perfil; ?></td>
