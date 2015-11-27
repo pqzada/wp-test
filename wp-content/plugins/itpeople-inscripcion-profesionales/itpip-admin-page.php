@@ -133,7 +133,7 @@ function itpip_load_content() {
 					<td><?php echo $p->anios_experiencia; ?></td>
 					<td><?php echo $p->disponibilidad; ?></td>
 					<td><?php echo $p->renta_liquida; ?></td>
-					<td><?php echo $p->cv; ?></td>
+					<td><a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a></td>
 					<td>
 						TODO
 					</td>
