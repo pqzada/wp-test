@@ -93,6 +93,8 @@ function itpip_load_content() {
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.0/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.print.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
 
@@ -194,7 +196,16 @@ function itpip_load_content() {
 		    	"paging": false,
 		    	"info": false,
 		    	"searching": false		 */   
-		    	stateSave: true
+		    	stateSave: true,
+		    	dom: 'Blfrtip',
+		    	buttons: [
+			        {
+			        	extend: 'print',
+			        	text: 'Imprimir',
+			        	className: 'btn btn-default pull-right btn-sm',
+			        	title: 'Profesionales'
+			        }
+			    ]
 		    });
 
 		    $('#mostrarArchivados').on('click', function() {
