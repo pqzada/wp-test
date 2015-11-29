@@ -6,67 +6,67 @@ function itpsc_load_detail($id) {
 
 ?>
 	<div class="wrap">
-	<h2>Detalle solicitud #<?php echo $id; ?></h2>
+	<h2>Detalle solicitud</h2>
 
-	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button><br><br>
+	<div class="col-xs-10">
+		<table class="table table-striped display" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><b>Perfil</b></td>
+				<td><?php echo $s->perfil; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Se ofrece</b></td>
+				<td><?php echo $s->ofrece; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Tecnologías</b></td>
+				<td><?php echo $s->tecnologias; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Funciones</b></td>
+				<td><?php echo $s->funciones; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Ciudad y lugar de trabajo</b></td>
+				<td><?php echo $s->lugar_trabajo; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Disponibilidad, fecha de ingreso</b></td>
+				<td><?php echo $s->fecha_ingreso; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Formación mínima</b></td>
+				<td><?php echo $s->formacion; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Años experiencia</b></td>
+				<td><?php echo $s->anios_experiencia; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Nivel profesional</b></td>
+				<td><?php echo $s->nivel_profesional; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Tipo contrato y duración del trabajo</b></td>
+				<td><?php echo $s->contrato_duracion; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Jornada</b></td>
+				<td><?php echo $s->jornada; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Ingresos líquidos a ofrecer</b></td>
+				<td><?php echo $s->ingreso; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Contacto</b></td>
+				<td><?php echo $s->contacto; ?></td>
+			</tr>		
+		</table>
 
-	<table class="table table-hover display" cellspacing="0" width="100%">
-		<tr>
-			<td valign="top"><b>Perfil</b></td>
-			<td><?php echo $s->perfil; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Se ofrece</b></td>
-			<td><?php echo $s->ofrece; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Tecnologías</b></td>
-			<td><?php echo $s->tecnologias; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Funciones</b></td>
-			<td><?php echo $s->funciones; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Ciudad y lugar de trabajo</b></td>
-			<td><?php echo $s->lugar_trabajo; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Disponibilidad, fecha de ingreso</b></td>
-			<td><?php echo $s->fecha_ingreso; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Formación mínima</b></td>
-			<td><?php echo $s->formacion; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Años experiencia</b></td>
-			<td><?php echo $s->anios_experiencia; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Nivel profesional</b></td>
-			<td><?php echo $s->nivel_profesional; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Tipo contrato y duración del trabajo</b></td>
-			<td><?php echo $s->contrato_duracion; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Jornada</b></td>
-			<td><?php echo $s->jornada; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Ingresos líquidos a ofrecer</b></td>
-			<td><?php echo $s->ingreso; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Contacto</b></td>
-			<td><?php echo $s->contacto; ?></td>
-		</tr>		
-	</table>
-
-	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button>
+		<a href="/wp-admin/admin.php?page=solicitudes-servicio" class="btn btn-primary">Volver</a>
 	</div>
+</div>
 
 <?php
 
@@ -106,25 +106,6 @@ function itpsc_load_content() {
 			</tr>
 		</thead>
 
-		<tfoot>
-			<tr>
-				<th>Perfil</th>
-				<th>Se ofrece</th>
-				<th>Tecnologías</th>
-				<th>Funciones</th>
-				<th>Ciudad y lugar de trabajo</th>
-				<th>Disponibilidad, fecha de ingreso</th>
-				<th>Formación mínima</th>
-				<th>Años experiencia</th>
-				<th>Nivel profesional</th>
-				<th>Tipo contrato y duración del trabajo</th>
-				<th>Jornada</th>
-				<th>Ingresos líquidos a ofrecer</th>
-				<th>Contacto</th>
-				<th>Acciones</th>
-			</tr>
-		</tfoot>
-
 		<tbody>
 
 			<?php
@@ -145,11 +126,12 @@ function itpsc_load_content() {
 					<td><?php echo $s->ingreso; ?></td>
 					<td><?php echo $s->contacto; ?></td>
 					<td>
-						<form method="POST" action="" name="formVerSolicitud">
-						<input type="hidden" name="id_solicitud" value="<?php echo $s->id; ?>">
-						<button class="btn" onclick="formVerSolicitud.submit()">
-							<i class="glyphicon glyphicon-search"></i> Ver
-						</button>
+						<form method="GET" action="" name="formVerSolicitud">
+							<input type="hidden" name="page" value="solicitudes-servicio">
+							<input type="hidden" name="id_solicitud" value="<?php echo $s->id; ?>">
+							<button class="btn btn-primary" onclick="formVerSolicitud.submit()">
+								<i class="glyphicon glyphicon-search"></i> Ver
+							</button>
 						</form>
 					</td>
 				</tr>

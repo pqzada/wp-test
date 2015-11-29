@@ -33,9 +33,9 @@ function solicitudes_setup_menu() {
  */
 function solicitudes_init() {	
 
-	if( isset($_POST['id_solicitud']) ) {
+	if( isset($_GET['id_solicitud']) ) {
 
-		itpsc_load_detail($_POST['id_solicitud']);
+		itpsc_load_detail($_GET['id_solicitud']);
 
 	} else {
 
