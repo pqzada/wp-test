@@ -206,6 +206,8 @@ function itpip_form_validate_post() {
 	    	$error['email'] = "Debes ingresar que un e-mail";
 	    } else if(strlen($_POST['email']) >= 100) {
     		$error['email'] = "Ingresa máximo 100 caracteres";
+    	} else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    		$error['email'] = "E-mail inválido";
     	}
 
     	if($_POST['nombre'] != "" && strlen($_POST['nombre']) >= 100) {
