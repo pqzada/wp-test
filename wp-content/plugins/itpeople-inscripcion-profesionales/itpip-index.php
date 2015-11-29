@@ -33,15 +33,15 @@ function inscripciones_setup_menu() {
  */
 function inscripciones_init() {	
 
-	//if( isset($_POST['id_inscripcion']) ) {
+	if( isset($_GET['id_profesional']) ) {
 
-	//	itpip_load_detail($_POST['id_inscripcion']);
+		itpip_load_detail($_GET['id_profesional']);
 
-	//} else {
+	} else {
 
 		itpip_load_content();
 
-	//}
+	}
 
 }
 

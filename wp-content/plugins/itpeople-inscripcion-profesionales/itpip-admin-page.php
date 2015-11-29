@@ -1,78 +1,89 @@
 <?php
 
-/*
 function itpip_load_detail($id) {
 
-	$s = itpip_get_solicitud_servicio($id);
+	itpip_estado_action();
+	itpip_ok_action();
+
+	$p = itpip_get_profesional_inscrito($id);
 
 ?>
 
-	<h1>Detalle solicitud #<?php echo $id; ?></h1>
+	<div class="wrap">
 
-	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button><br><br>
+		<h2><?php echo $p->nombre; ?></h2><br>
 
-	<table class="table table-hover" cellspacing="0" width="100%">
-		<tr>
-			<td valign="top"><b>Perfil</b></td>
-			<td><?php echo $s->perfil; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Se ofrece</b></td>
-			<td><?php echo $s->ofrece; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Tecnologías</b></td>
-			<td><?php echo $s->tecnologias; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Funciones</b></td>
-			<td><?php echo $s->funciones; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Ciudad y lugar de trabajo</b></td>
-			<td><?php echo $s->lugar_trabajo; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Disponibilidad, fecha de ingreso</b></td>
-			<td><?php echo $s->fecha_ingreso; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Formación mínima</b></td>
-			<td><?php echo $s->formacion; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Años experiencia</b></td>
-			<td><?php echo $s->anios_experiencia; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Nivel profesional</b></td>
-			<td><?php echo $s->nivel_profesional; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Tipo contrato y duración del trabajo</b></td>
-			<td><?php echo $s->contrato_duracion; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Jornada</b></td>
-			<td><?php echo $s->jornada; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Ingresos líquidos a ofrecer</b></td>
-			<td><?php echo $s->ingreso; ?></td>
-		</tr>
-		<tr>
-			<td valign="top"><b>Contacto</b></td>
-			<td><?php echo $s->contacto; ?></td>
-		</tr>		
-	</table>
+		<div class="col-xs-6">
+			<table class="table table-striped display" cellspacing="0" width="50%">
+				<tr>
+					<td valign="top"><b>Cargo o especialidad</b></td>
+					<td><?php echo $p->cargo; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>E-mail</b></td>
+					<td><?php echo $p->email; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Teléfono</b></td>
+					<td><?php echo $p->telefono; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Tecnologías</b></td>
+					<td><?php echo $p->tecnologias; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Años experiencia</b></td>
+					<td><?php echo $p->anios_experiencia; ?></td>
+				</tr>		
+				<tr>
+					<td valign="top"><b>Disponibilidad</b></td>
+					<td><?php echo $p->disponibilidad; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Renta líquida</b></td>
+					<td><?php echo $p->renta_liquida; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Currículum Vitae</b></td>
+					<td><a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Estado</b></td>
+					<td>
+						<form method="POST" name="formEstado">
+							<input type="hidden" name="id" value="<?php echo $p->id; ?>">
+							<select name="estado" onchange="formEstado.submit()">
+								<option value="ATENDIDO" <?php if($p->estado=="ATENDIDO") echo "selected"; ?>>Atendido</option>
+								<option value="RECIBIDO" <?php if($p->estado=="RECIBIDO") echo "selected"; ?>>Recibido</option>
+								<option value="ARCHIVADO" <?php if($p->estado=="ARCHIVADO") echo "selected"; ?>>Archivado</option>
+							</select>
+						</form>
+					</td>
+				</tr>
+				
+				<tr>
+					<td valign="top"><b>¿Ok?</b></td>
+					<td>
+						<form method="POST" name="formOk">
+							<input type="hidden" name="id" value="<?php echo $p->id; ?>">
+							<select name="ok" onchange="formOk.submit()">
+								<option value="0" <?php if($p->ok==0) echo "selected"; ?>>NOK</option>
+								<option value="1" <?php if($p->ok==1) echo "selected"; ?>>OK</option>
+							</select>
+						</form>
+					</td>
+				</tr>		
+			</table>
+			
+			<a href="/wp-admin/admin.php?page=inscripcion-profesionales" class="btn btn-primary">Volver</a>
 
-	<button class="btn pull-right" onclick="javascript:history.go(-1)">Volver</button>
+		</div>
+	</div>
 	
 
 <?php
 
 }
-*/
 
 function itpip_load_content() {
 
@@ -88,6 +99,7 @@ function itpip_load_content() {
 	<div class="wrap">
 	<h2>Profesionales Inscritos</h2>
 
+	<form><div class="checkbox"><label><input type="checkbox" id="mostrarArchivados"> <b>Mostrar archivados</b></label></div></form>
 	<table id="profesionales" class="display table" cellspacing="0" width="100%">
 		<thead>
 			<tr>
@@ -100,24 +112,11 @@ function itpip_load_content() {
 				<th>Disponibilidad</th>
 				<th>Renta líquida</th>
 				<th>CV</th>
+				<th>Estado</th>
+				<th>¿Ok?</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
-
-		<tfoot>
-			<tr>
-				<th>Cargo</th>
-				<th>Nombre</th>
-				<th>E-mail</th>
-				<th>Teléfono</th>
-				<th>Tecnologías</th>
-				<th>Años experiencia</th>				
-				<th>Disponibilidad</th>
-				<th>Renta líquida</th>
-				<th>CV</th>
-				<th>Acciones</th>
-			</tr>
-		</tfoot>
 
 		<tbody>
 
@@ -134,8 +133,24 @@ function itpip_load_content() {
 					<td><?php echo $p->disponibilidad; ?></td>
 					<td><?php echo $p->renta_liquida; ?></td>
 					<td><a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a></td>
+					<td><?php echo $p->estado; ?></td>
 					<td>
-						TODO
+						<?php
+							if($p->ok == 0) {
+								echo "NOK";
+							} else {
+								echo "OK";
+							}
+						?>
+					</td>
+					<td>
+						<form method="GET" action="" name="formVerProfesional">							
+							<input type="hidden" name="page" value="inscripcion-profesionales">
+							<input type="hidden" name="id_profesional" value="<?php echo $p->id; ?>">
+							<button class="btn btn-primary" onclick="formVerProfesional.submit()">
+								<i class="glyphicon glyphicon-search"></i> Ver
+							</button>
+						</form>
 					</td>
 				</tr>
 			<?php
@@ -147,7 +162,26 @@ function itpip_load_content() {
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
-		    $('#profesionales').DataTable({
+
+			$.fn.dataTable.ext.search.push(
+			    function( settings, data, dataIndex ) {
+
+			    	var estado = data[9];
+			    	console.log(estado);
+
+			    	if($('#mostrarArchivados').is(':checked')) {
+			    		return true;
+			    	} else {
+			    		if(estado == 'ARCHIVADO') {
+			    			return false;
+			    		} else {
+			    			return true;
+			    		}
+			    	}
+			    }
+			);
+
+		    var table = $('#profesionales').DataTable({
 		    	/*
 		    	"columnDefs": [
 		    		{
@@ -160,7 +194,12 @@ function itpip_load_content() {
 		    	"paging": false,
 		    	"info": false,
 		    	"searching": false		 */   
+		    	stateSave: true
 		    });
+
+		    $('#mostrarArchivados').on('click', function() {
+		    	table.draw();
+		    })
 		} );
 	</script>
 
@@ -186,20 +225,51 @@ function itpip_get_profesionales_inscritos() {
 }
 
 /**
- * Obtiene solicitud de servicio
+ * Obtiene profesional inscrito
  *
- * @return mixed[] Solicitud de servicio
+ * @return mixed[] Profesional
  */
-/*
-function itpip_get_solicitud_servicio($id) {
+
+function itpip_get_profesional_inscrito($id) {
 
 	global $wpdb;
 
-	$sql = "SELECT * FROM itpeople_solicitud_servicios WHERE id = $id";
+	$sql = "SELECT * FROM itpeople_profesional WHERE id = $id";
 	$res = $wpdb->get_results($sql);
 
 	return $res[0];
 
 }
-*/
+
+/**
+ * Ejecuta accion de cambio de estado
+ */
+function itpip_estado_action() {
+
+	if(isset($_POST['estado'])) {
+
+		global $wpdb;
+
+		$wpdb->update('itpeople_profesional', array('estado' => $_POST['estado']), array('id' => $_POST['id']));
+
+	}
+
+}
+
+
+/**
+ * Ejecuta accion de cambio de ok
+ */
+function itpip_ok_action() {
+
+	if(isset($_POST['ok'])) {
+
+		global $wpdb;
+
+		$wpdb->update('itpeople_profesional', array('ok' => $_POST['ok']), array('id' => $_POST['id']));
+
+	}
+
+}
+
 ?>

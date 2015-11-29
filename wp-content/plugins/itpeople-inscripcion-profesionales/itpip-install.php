@@ -26,6 +26,8 @@ function itpip_install() {
 	  disponibilidad varchar(100) NOT NULL,
 	  renta_liquida varchar(100) NOT NULL,
 	  cv varchar(100) NOT NULL,
+	  estado varchar(20) DEFAULT 'RECIBIDO' NOT NULL,
+	  ok int DEFAULT 0 NOT NULL,
 	  UNIQUE KEY id (id)
 	) $charset_collate;";
 
