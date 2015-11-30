@@ -35,6 +35,25 @@ function itpsc_form_func() {
 
 			<p>Completa el siguiente formulario con la información necesaria para solicitar servicios</p>
 
+			<div class="form-group <?php if(isset($error['tipo'])) {  echo "has-error"; } ?>">
+				<label class="control-label" for="tipo">Tipo de solicitud: (*)</label>
+				<select name="tipo" class="form-control" id="tipo">
+					<option value="">Seleccione</option>
+					<option value="Servicios / Proyectos / Gestión Subcontractors" <?php if(isset($_POST['tipo']) && $_POST['tipo'] == "Servicios / Proyectos / Gestión Subcontractors") {  echo "selected"; } ?>>
+						Servicios / Proyectos / Gestión Subcontractors
+					</option>
+					<option value="Trabajadores Transitorios" <?php if(isset($_POST['tipo']) && $_POST['tipo'] == "Trabajadores Transitorios") {  echo "selected"; } ?>>
+						Trabajadores Transitorios
+					</option>
+					<option value="Contratación Directa" <?php if(isset($_POST['tipo']) && $_POST['tipo'] == "Contratación Directa") {  echo "selected"; } ?>>
+						Contratación Directa
+					</option>
+				</select>
+				<?php if(isset($error['tipo'])) {  ?>
+				<span class="help-block"><?php echo $error['tipo']; ?></span>
+				<?php } ?>
+			</div>	
+
 			<div class="form-group <?php if(isset($error['perfil'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="perfil">Perfil del candidato requerido: (*)</label>
 				<textarea class="form-control" name="perfil" id="perfil" rows="2"><?php if(isset($_POST['perfil'])) {  echo $_POST['perfil']; } ?></textarea>
@@ -166,7 +185,8 @@ function itpsc_form_save_post() {
 		'contrato_duracion' => $_POST['tipo_contrato'],
 		'jornada' => $_POST['jornada'],
 		'ingreso' => $_POST['liquido_ofrece'],
-		'contacto' => $_POST['contacto']
+		'contacto' => $_POST['contacto'],
+		'tipo' => $_POST['tipo']
 	));
 
 
@@ -178,6 +198,10 @@ function itpsc_form_validate_post() {
 
 	if(isset($_POST['enviar_solititud'])) {
 
+
+		if($_POST['tipo'] == "") {
+			$error['tipo'] = "Debes seleccionar un tipo de servicio";
+		}
 
 		if($_POST['perfil'] == "") {
 			$error['perfil'] = "Debes ingresar un perfil";

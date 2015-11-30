@@ -361,6 +361,11 @@
   font-size: 18pt;
   font-weight: 500;
 }
+.todo .interior h3 {
+  color: #00428c;
+  font-size: 14pt;
+  font-weight: 500;
+}
 .todo footer {
   color: #6d6d6d;
   font-family: "Lato", sans-serif;

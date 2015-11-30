@@ -30,6 +30,7 @@ function itpsc_install() {
 	  jornada varchar(100) NOT NULL,
 	  ingreso varchar(100) NOT NULL,
 	  contacto varchar(100) NOT NULL,
+	  tipo varchar(100) NOT NULL,
 	  UNIQUE KEY id (id)
 	) $charset_collate;";
 
