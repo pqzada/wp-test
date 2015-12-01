@@ -89,6 +89,7 @@ function itpsc_load_content() {
 	<table id="solicitudes" class="display table table-condensed" cellspacing="0" width="100%">
 		<thead>
 			<tr>
+				<th>Tipo</th>
 				<th>Perfil</th>
 				<th>Se ofrece</th>
 				<th>Tecnologías</th>
@@ -112,6 +113,7 @@ function itpsc_load_content() {
 			foreach($solicitudes as $s) { 
 			?>
 				<tr>
+					<td><?php echo $s->tipo; ?></td>
 					<td><?php echo $s->perfil; ?></td>
 					<td><?php echo $s->ofrece; ?></td>
 					<td><?php echo $s->tecnologias; ?></td>
@@ -147,7 +149,7 @@ function itpsc_load_content() {
 		    $('#solicitudes').DataTable({
 		    	"columnDefs": [
 		    		{
-		    			"targets": [ 1,3,6,7,8,9,10 ],
+		    			"targets": [ 2,4,7,8,9,10,11 ],
 		                "visible": false,
 		                "searchable": true
 		    		}
