@@ -16,6 +16,10 @@ function itpsc_form_func() {
 	ob_start();
 	?> 
 
+		<link id="bsdp-css" href="<?php echo includes_url(); ?>css/bootstrap-datepicker3.css" rel="stylesheet">
+		<script src="<?php echo includes_url(); ?>js/bootstrap-datepicker.js"></script>
+		<script src="<?php echo includes_url(); ?>locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
 		<?php if(!is_null($result) && $result !== false) { ?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -94,8 +98,16 @@ function itpsc_form_func() {
 				<?php } ?>
 			</div>
 
+			<div class="form-group <?php if(isset($error['disponibilidad'])) {  echo "has-error"; } ?>">
+				<label class="control-label" for="disponibilidad">Disponibilidad:</label>
+				<input type="text" name="disponibilidad" id="disponibilidad" class="form-control" value="<?php if(isset($_POST['disponibilidad'])) echo $_POST['disponibilidad']; ?>">
+				<?php if(isset($error['disponibilidad'])) { ?>
+				<span class="help-block"><?php echo $error['disponibilidad']; ?></span>
+				<?php } ?>
+			</div>
+
 			<div class="form-group <?php if(isset($error['fecha_ingreso'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="fecha_ingreso">Disponibilidad, fecha de ingreso:</label>
+				<label class="control-label" for="fecha_ingreso">Fecha de ingreso:</label>
 				<input type="text" name="fecha_ingreso" id="fecha_ingreso" class="form-control" value="<?php if(isset($_POST['fecha_ingreso'])) echo $_POST['fecha_ingreso']; ?>">
 				<?php if(isset($error['fecha_ingreso'])) { ?>
 				<span class="help-block"><?php echo $error['fecha_ingreso']; ?></span>
@@ -164,6 +176,14 @@ function itpsc_form_func() {
 
 		</form>
 
+		<script type="text/javascript">
+		$('#fecha_ingreso').datepicker({
+		    format: "yyyy-mm-dd",
+		    autoclose: true,
+		    language: "es",
+		});
+		</script>
+
 	<?php
 	return ob_get_clean();
 }
@@ -179,6 +199,7 @@ function itpsc_form_save_post() {
 		'funciones' => $_POST['funciones'],
 		'lugar_trabajo' => $_POST['lugar_trabajo'],
 		'fecha_ingreso' => $_POST['fecha_ingreso'],
+		'disponibilidad' => $_POST['disponibilidad'],
 		'formacion' => $_POST['formacion'],
 		'anios_experiencia' => $_POST['anios'],
 		'nivel_profesional' => $_POST['nivel_profesional'],
@@ -227,12 +248,19 @@ function itpsc_form_validate_post() {
 	    	}
 	    }
 
-	    if($_POST['fecha_ingreso'] == "") {
-	    	$error['fecha_ingreso'] = "Debes ingresar la dispoibilidad y/o fecha de ingreso";
+	    if($_POST['disponibilidad'] == "") {
+	    	$error['disponibilidad'] = "Debes ingresar la disponibilidad";
 	    } else {
-	    	if(strlen($_POST['fecha_ingreso']) >= 100) {
-	    		$error['fecha_ingreso'] = "Ingresa máximo 100 caracteres";
+	    	if(strlen($_POST['disponibilidad']) >= 100) {
+	    		$error['disponibilidad'] = "Ingresa máximo 100 caracteres";
 	    	}
+	    }
+
+	    if($_POST['fecha_ingreso'] == "") {
+	    	$d = DateTime::createFromFormat('Y-m-d', $_POST['fecha_ingreso']);
+    		if( !($d && $d->format('Y-m-d') == $_POST['fecha_ingreso']) ) {
+    			$error['fecha_ingreso'] = "Formato de fecha incorrecto";
+    		}	    	
 	    }
 
 	    if($_POST['formacion'] == "") {

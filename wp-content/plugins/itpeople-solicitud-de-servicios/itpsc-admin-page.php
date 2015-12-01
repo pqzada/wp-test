@@ -31,7 +31,11 @@ function itpsc_load_detail($id) {
 				<td><?php echo $s->lugar_trabajo; ?></td>
 			</tr>
 			<tr>
-				<td valign="top"><b>Disponibilidad, fecha de ingreso</b></td>
+				<td valign="top"><b>Disponibilidad</b></td>
+				<td><?php echo $s->disponibilidad; ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Fecha de ingreso</b></td>
 				<td><?php echo $s->fecha_ingreso; ?></td>
 			</tr>
 			<tr>
@@ -96,6 +100,7 @@ function itpsc_load_content() {
 				<th>Funciones</th>
 				<th>Lugar de trabajo</th>
 				<th>Disponibilidad</th>
+				<th>Fecha de ingreso</th>
 				<th>Formación mínima</th>
 				<th>Años experiencia</th>
 				<th>Nivel profesional</th>
@@ -119,6 +124,7 @@ function itpsc_load_content() {
 					<td><?php echo $s->tecnologias; ?></td>
 					<td><?php echo $s->funciones; ?></td>
 					<td><?php echo $s->lugar_trabajo; ?></td>
+					<td><?php echo $s->disponibilidad; ?></td>
 					<td><?php echo $s->fecha_ingreso; ?></td>
 					<td><?php echo $s->formacion; ?></td>
 					<td><?php echo $s->anios_experiencia; ?></td>
@@ -149,7 +155,7 @@ function itpsc_load_content() {
 		    $('#solicitudes').DataTable({
 		    	"columnDefs": [
 		    		{
-		    			"targets": [ 2,4,7,8,9,10,11 ],
+		    			"targets": [ 2,4,7,8,9,10,11,12 ],
 		                "visible": false,
 		                "searchable": true
 		    		}
