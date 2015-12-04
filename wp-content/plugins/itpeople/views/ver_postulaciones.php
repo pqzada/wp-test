@@ -36,6 +36,12 @@ tr.aprobado {
 			<h1>Postulaciones</h1>
 			<h2><?php echo $titulo ?></h2>
 
+			<?php if(!is_null($id_oferta)) { ?>
+			<a href="/exportar-postulantes.php?id=<?php echo $id_oferta; ?>" target="_blank" class="btn btn-success pull-right">
+				<i class="glyphicon glyphicon-export"></i> Exportar
+			</a>
+			<?php } ?>
+
 			<h5 id="resumen">
 				Resumen: 
 				<?php echo $leidos; ?> leído<?php if($leidos != "1") echo "s"; ?>, 

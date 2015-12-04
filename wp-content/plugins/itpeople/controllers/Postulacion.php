@@ -472,5 +472,7 @@
 
 			echo $resumen;
 		}
+
+		
 	}
 	?>

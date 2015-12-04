@@ -31,3 +31,8 @@
 	font-weight: bold !important;
 	color: #333 !important;
 }
+
+#list-tecnologias li {
+	width: 20%;
+	float: left;
+}

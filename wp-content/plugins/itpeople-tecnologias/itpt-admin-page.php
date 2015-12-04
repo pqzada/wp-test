@@ -1,10 +1,3 @@
-<style>
-#list-tecnologias li {
-	width: 20%;
-	float: left;
-}
-</style>
-
 <?php
 
 function itpt_load_content() {
