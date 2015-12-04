@@ -68,6 +68,7 @@
 			add_action( 'wp_ajax_eliminar_postulacion', array( $this, 'ajax_eliminar_postulacion' ) );
 			add_action( 'wp_ajax_marcar_leido', array( $this, 'ajax_marcar_leido' ) );
 			add_action( 'wp_ajax_marcar_noleido', array( $this, 'ajax_marcar_noleido' ) );
+			add_action( 'wp_ajax_actualizar_resumen', array( $this, 'ajax_actualizar_resumen' ) );
 		}
 
 		public function script_enqueuer() {
@@ -428,6 +429,48 @@
 			);
 
 
+		}
+
+		public function ajax_actualizar_resumen() {
+
+			global $wpdb; 
+
+			$sql = "SELECT * FROM tb_postulaciones_itpeople WHERE eliminado = 0 AND id_oferta = " . $_REQUEST['id'];
+			$postulaciones = $wpdb->get_results($sql);
+
+			// Obtengo resumen
+			$aprobados = 0;
+			$no_aprobados = 0;
+			$leidos = 0;
+			$no_leidos = 0;
+
+			foreach ($postulaciones as $postulacion) {
+				if($postulacion->aprobado == "1") {
+					$aprobados++;
+				} else {
+					$no_aprobados++;
+				}
+
+				if($postulacion->leido == "1") {
+					$leidos++;
+				} else {
+					$no_leidos++;
+				}
+
+				$id_oferta = $postulacion->id_oferta;
+			}
+
+			$resumen = "XRESUMENXResumen: " . $leidos . " leído";
+			$resumen .= ($leidos != "1") ? "s, ":", ";
+			$resumen .= $no_leidos . " no leído";
+			$resumen .= ($no_leidos != "1") ? "s, ":", ";
+			$resumen .= $aprobados . " aprobado";
+			$resumen .= ($aprobados != "1") ? "s y ":" y ";
+			$resumen .= $no_aprobados . " no aprobado";
+			$resumen .= ($no_aprobados != "1") ? "s.":".";
+			$resumen .= "XRESUMENX";
+
+			echo $resumen;
 		}
 	}
 	?>

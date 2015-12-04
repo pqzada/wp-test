@@ -4,13 +4,47 @@ tr.aprobado {
 }
 </style>
 
+<?php 
+	$id_oferta = null;
+
+	// Obtengo resumen
+	$aprobados = 0;
+	$no_aprobados = 0;
+	$leidos = 0;
+	$no_leidos = 0;
+	foreach ($postulaciones as $postulacion) {
+		if($postulacion->aprobado == "1") {
+			$aprobados++;
+		} else {
+			$no_aprobados++;
+		}
+
+		if($postulacion->leido == "1") {
+			$leidos++;
+		} else {
+			$no_leidos++;
+		}
+
+		$id_oferta = $postulacion->id_oferta;
+	}
+
+?>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
 			<h1>Postulaciones</h1>
 			<h2><?php echo $titulo ?></h2>
 
-			<table class="table table-condensed table-hover display" width="100%">
+			<h5 id="resumen">
+				Resumen: 
+				<?php echo $leidos; ?> leído<?php if($leidos != "1") echo "s"; ?>, 
+				<?php echo $no_leidos; ?> no leído<?php if($no_leidos != "1") echo "s"; ?>, 
+				<?php echo $aprobados; ?> aprobado<?php if($aprobados != "1") echo "s"; ?> y 
+				<?php echo $no_aprobados; ?> no aprobado<?php if($no_aprobados != "1") echo "s"; ?>, 
+			</h5>
+
+			<table class="table table-condensed table-hover display" width="100%" id="postulaciones" datatable="">
 				<thead>
 					<tr>
 						<th>Nombre</th>
@@ -70,6 +104,25 @@ tr.aprobado {
 </div>
 
 <script type="text/javascript">
+
+	function actualizarResumen() {
+
+		jQuery.ajax({
+			url: postulaciones_ajax.ajaxurl,
+			type: 'POST',
+			dataType: 'html',
+			data: {
+				'action'  : 'actualizar_resumen',
+				'id': '<?php echo $id_oferta; ?>'
+			},
+			success: function(response) {
+				console.log(response);
+				var tmp = response.split("XRESUMENX");
+				jQuery("#resumen").html(tmp[1]);
+			}
+		})
+
+	}
 	
 	jQuery('.aprobar_postulacion').on('click', function(event) {
 
@@ -91,6 +144,7 @@ tr.aprobado {
 					jQuery(".aprobar_postulacion[data-id="+id+"]").hide();
 					jQuery(".desaprobar_postulacion[data-id="+id+"]").show();
 					jQuery(".tr-"+id).addClass("success");
+					actualizarResumen();
 				}
 			})
 
@@ -117,6 +171,7 @@ tr.aprobado {
 					jQuery(".aprobar_postulacion[data-id="+id+"]").show();
 					jQuery(".desaprobar_postulacion[data-id="+id+"]").hide();
 					jQuery(".tr-"+id).removeClass("success");
+					actualizarResumen();
 				}
 			})
 
@@ -141,6 +196,7 @@ tr.aprobado {
 				jQuery(".marcar_leido[data-id="+id+"]").hide();
 				jQuery(".marcar_noleido[data-id="+id+"]").show();
 				jQuery(".tr-"+id).removeClass("noleido");
+				actualizarResumen();
 			}
 		})
 	});
@@ -163,6 +219,7 @@ tr.aprobado {
 				jQuery(".marcar_leido[data-id="+id+"]").hide();
 				jQuery(".marcar_noleido[data-id="+id+"]").show();
 				jQuery(".tr-"+id).removeClass("noleido");
+				actualizarResumen();
 			}
 		})
 	});
@@ -185,6 +242,7 @@ tr.aprobado {
 				jQuery(".marcar_leido[data-id="+id+"]").show();
 				jQuery(".marcar_noleido[data-id="+id+"]").hide();
 				jQuery(".tr-"+id).addClass("noleido");
+				actualizarResumen();
 			}
 		})
 	});
@@ -207,6 +265,7 @@ tr.aprobado {
 				},
 				success: function(response) {
 					jQuery('.tr-' + id).hide();
+					actualizarResumen();
 				}
 			})
 
@@ -214,5 +273,6 @@ tr.aprobado {
 	});
 
 	jQuery('td a').tooltip();
+	
 
 </script>

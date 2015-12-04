@@ -1,6 +1,6 @@
 @media( min-width: 1200px) {
   #modal_postulaciones .modal-dialog {
-    width: 80%;
+    width: 95%;
   }
 }
 @media( max-width: 1199px) {
