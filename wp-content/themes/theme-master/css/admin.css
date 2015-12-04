@@ -26,3 +26,8 @@
 .buttons-print {
 	margin-left: 5px;
 }
+
+.noleido td {
+	font-weight: bold !important;
+	color: #333 !important;
+}

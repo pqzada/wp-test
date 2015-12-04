@@ -66,6 +66,8 @@
 			add_action( 'wp_ajax_aprobar_postulacion', array( $this, 'ajax_aprobar_postulacion' ) );
 			add_action( 'wp_ajax_desaprobar_postulacion', array( $this, 'ajax_desaprobar_postulacion' ) );
 			add_action( 'wp_ajax_eliminar_postulacion', array( $this, 'ajax_eliminar_postulacion' ) );
+			add_action( 'wp_ajax_marcar_leido', array( $this, 'ajax_marcar_leido' ) );
+			add_action( 'wp_ajax_marcar_noleido', array( $this, 'ajax_marcar_noleido' ) );
 		}
 
 		public function script_enqueuer() {
@@ -396,6 +398,32 @@
 			$wpdb->update(
 				'tb_postulaciones_itpeople',
 				array("eliminado" => 1),
+				array("id_postulacion" => $_REQUEST['id'])
+			);
+
+
+		}
+
+		public function ajax_marcar_leido() {
+			
+			global $wpdb;
+
+			$wpdb->update(
+				'tb_postulaciones_itpeople',
+				array("leido" => 1),
+				array("id_postulacion" => $_REQUEST['id'])
+			);
+
+
+		}
+
+		public function ajax_marcar_noleido() {
+			
+			global $wpdb;
+
+			$wpdb->update(
+				'tb_postulaciones_itpeople',
+				array("leido" => 0),
 				array("id_postulacion" => $_REQUEST['id'])
 			);
 
