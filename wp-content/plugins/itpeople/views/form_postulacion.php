@@ -1,3 +1,6 @@
+<link href="/wp-includes/css/magicsuggest.css" rel="stylesheet">
+<script src="/wp-includes/js/magicsuggest.js"></script>
+
 <?php if (isset($error)): ?>
 
 	<script type="text/javascript">
@@ -75,42 +78,49 @@
 					<div class="form-group">
 						<label for="nombre" class="col-sm-3 control-label">Nombre</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="postulacion[nombre]" id="nombre" placeholder="Nombre" value="<?php echo $nombre ?>" />
+							<input type="text" class="form-control input-sm" name="postulacion[nombre]" id="nombre" placeholder="Nombre" value="<?php echo $nombre ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="email" class="col-sm-3 control-label">E-Mail</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" name="postulacion[email]" id="email" placeholder="E-Mail" value="<?php echo $email ?>" />
+							<input type="email" class="form-control input-sm" name="postulacion[email]" id="email" placeholder="E-Mail" value="<?php echo $email ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="telefono" class="col-sm-3 control-label">Teléfono</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="postulacion[telefono]" id="telefono" placeholder="Teléfono" value="<?php echo $telefono ?>" />
+							<input type="text" class="form-control input-sm" name="postulacion[telefono]" id="telefono" placeholder="Teléfono" value="<?php echo $telefono ?>" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="tecnologias" class="col-sm-3 control-label">Tecnologías</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control input-sm" name="postulacion[tecnologias]" id="tecnologias" placeholder="Tecnologías" value="" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="anios_experiencia" class="col-sm-3 control-label">Años Experiencia</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="postulacion[anios_experiencia]" id="anios_experiencia" placeholder="Años Experiencia" value="<?php echo $anios_experiencia ?>" />
+							<input type="text" class="form-control input-sm" name="postulacion[anios_experiencia]" id="anios_experiencia" placeholder="Años Experiencia" value="<?php echo $anios_experiencia ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="disponibilidad" class="col-sm-3 control-label">Disponibilidad</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="postulacion[disponibilidad]" id="disponibilidad" placeholder="Disponibilidad" value="<?php echo $disponibilidad ?>" />
+							<input type="text" class="form-control input-sm" name="postulacion[disponibilidad]" id="disponibilidad" placeholder="Disponibilidad" value="<?php echo $disponibilidad ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="renta_liquida" class="col-sm-3 control-label">Renta Liquida</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="postulacion[renta_liquida]" id="renta_liquida" placeholder="Renta Liquida" value="<?php echo $renta_liquida ?>" />
+							<input type="text" class="form-control input-sm" name="postulacion[renta_liquida]" id="renta_liquida" placeholder="Renta Liquida" value="<?php echo $renta_liquida ?>" />
 						</div>
 					</div>
 
@@ -124,7 +134,7 @@
 					<div class="form-group">
 						<label for="observaciones" class="col-sm-3 control-label">Observaciones</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" name="postulacion[observaciones]" id="observaciones" placeholder="Observaciones"><?php echo $observaciones ?></textarea>
+							<textarea class="form-control input-sm" name="postulacion[observaciones]" id="observaciones" placeholder="Observaciones"><?php echo $observaciones ?></textarea>
 						</div>
 					</div>
 
@@ -136,3 +146,15 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(function() {
+		    $('#tecnologias').magicSuggest({
+		        data: <?php echo $listado_tecnologias; ?>
+		    });
+		});
+
+	});
+</script>

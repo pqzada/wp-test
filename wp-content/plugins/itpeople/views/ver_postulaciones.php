@@ -56,6 +56,7 @@ tr.aprobado {
 						<th>Nombre</th>
 						<th>Email</th>
 						<th>Teléfono</th>
+						<th>Tecnologías</th>
 						<th>Años Experiencia</th>
 						<th>Disponibilidad</th>
 						<th>Renta Liquida</th>
@@ -71,6 +72,7 @@ tr.aprobado {
 						<td><?php echo $postulacion->nombre ?></td>
 						<td><?php echo $postulacion->email ?></td>
 						<td><?php echo $postulacion->telefono ?></td>
+						<td><?php echo $postulacion->tecnologias ?></td>
 						<td><?php echo $postulacion->anios_experiencia ?></td>
 						<td><?php echo $postulacion->disponibilidad ?></td>
 						<td><?php echo $postulacion->renta_liquida ?></td>

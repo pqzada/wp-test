@@ -11,6 +11,7 @@
 				$nombre,
 				$email,
 				$telefono,
+				$tecnologias,
 				$anios_experiencia,
 				$disponibilidad,
 				$renta_liquida,
@@ -37,6 +38,7 @@
 				$this->nombre            = (isset($data['nombre']))            ? $data['nombre']            : null;
 				$this->email             = (isset($data['email']))             ? $data['email']             : null;
 				$this->telefono          = (isset($data['telefono']))          ? $data['telefono']          : null;
+				$this->tecnologias       = (isset($data['tecnologias']))       ? $data['tecnologias']       : null;
 				$this->anios_experiencia = (isset($data['anios_experiencia'])) ? $data['anios_experiencia'] : null;
 				$this->disponibilidad    = (isset($data['disponibilidad']))    ? $data['disponibilidad']    : null;
 				$this->renta_liquida     = (isset($data['renta_liquida']))     ? $data['renta_liquida']     : null;
@@ -48,11 +50,17 @@
 				$this->nombre            = (isset($data->nombre))              ? $data->nombre           	 : null;
 				$this->email             = (isset($data->email))               ? $data->email            	 : null;
 				$this->telefono          = (isset($data->telefono))            ? $data->telefono         	 : null;
+				$this->tecnologias       = (isset($data->tecnologias))         ? $data->tecnologias          : null;
 				$this->anios_experiencia = (isset($data->anios_experiencia))   ? $data->anios_experiencia	 : null;
 				$this->disponibilidad    = (isset($data->disponibilidad))      ? $data->disponibilidad   	 : null;
 				$this->renta_liquida     = (isset($data->renta_liquida))       ? $data->renta_liquida    	 : null;
 				$this->ext_curriculum    = (isset($data->ext_curriculum))  	   ? $data->ext_curriculum       : null;
 				$this->observaciones     = (isset($data->observaciones))       ? $data->observaciones    	 : null;
+			}
+
+			// Transformacion tecnologias
+			if(is_array($this->tecnologias)) {
+				$this->tecnologias = implode(", ", $this->tecnologias);
 			}
 		}
 
@@ -108,6 +116,14 @@
 					'max'=>255,
 					'trim'=>true
 				),
+				'tecnologias'          => array(
+					'label' => 'Tecnologías',
+					'type'=>'string',
+					'required'=>false,
+					'min'=>0,
+					'max'=>255,
+					'trim'=>true
+				),
 				'anios_experiencia' => array(
 					'label' => 'Años de Experiencia',
 					'type'=>'string',
@@ -160,6 +176,7 @@
 				'nombre'            => $this->nombre,
 				'email'             => $this->email,
 				'telefono'          => $this->telefono,
+				'tecnologias'       => $this->tecnologias,
 				'anios_experiencia' => $this->anios_experiencia,
 				'disponibilidad'    => $this->disponibilidad,
 				'renta_liquida'     => $this->renta_liquida,

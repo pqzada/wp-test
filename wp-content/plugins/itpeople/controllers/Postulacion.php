@@ -201,31 +201,54 @@
 
 		public function form_postulacion($attr)
 		{
+
 			$data = array(
 				'id_oferta'			=> $attr['id_oferta'],
 				'nombre'            => parent::model('Model_Postulacion')->nombre,
 				'email'             => parent::model('Model_Postulacion')->email,
 				'telefono'          => parent::model('Model_Postulacion')->telefono,
+				'tecnologias'       => parent::model('Model_Postulacion')->tecnologias,
 				'anios_experiencia' => parent::model('Model_Postulacion')->anios_experiencia,
 				'disponibilidad'    => parent::model('Model_Postulacion')->disponibilidad,
 				'renta_liquida'     => parent::model('Model_Postulacion')->renta_liquida,
 				'observaciones'     => parent::model('Model_Postulacion')->observaciones,
 				);
+
 			$error = parent::get_error();
 			if (count($error) >= 1) {
 				$data['error'] = $error;
 			}
+
 			$mensaje = parent::get_mensaje();
 			if (count($mensaje) >= 1) {
 				$data['mensaje'] = $mensaje;
 			}
+
+			$data['listado_tecnologias'] = $this->get_listado_tecnologias();
+
 			return $this->render('form_postulacion', $data, true);
+		}
+
+		public function get_listado_tecnologias() {
+
+			global $wpdb;
+
+			$sql = "SELECT * FROM itpeople_tecnologia ORDER BY nombre ASC";
+			$res = $wpdb->get_results($sql);
+
+			$listado = array();
+			foreach($res as $r) {
+				$listado[] = $r->nombre;
+			}
+
+			return "['" . implode("','", $listado) . "']";
+
 		}
 
 		public function action_form_postulacion()
 		{
 
-			if(isset($_GET['postulacion']) && $_GET['postulacion'] == 'nueva' && isset($_POST['postulacion']) && $_POST['postulacion']){
+			if(isset($_GET['postulacion']) && $_GET['postulacion'] == 'nueva' && isset($_POST['postulacion']) && $_POST['postulacion']) {
 
 				$data = $_POST['postulacion'];
 				$data['ext_curriculum'] = 'none';

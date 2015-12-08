@@ -12,6 +12,7 @@ foreach($postulaciones as $p) {
 		"Nombre" => $p->nombre,
 		"E-mail" => $p->email,
 		"Teléfono" => $p->telefono,
+		"Tecnologías" => $p->tecnologias,
 		"Años experiencia" => $p->anios_experiencia,
 		"Disponibilidad" => $p->disponibilidad,
 		"Renta líquida" => $p->renta_liquida,
