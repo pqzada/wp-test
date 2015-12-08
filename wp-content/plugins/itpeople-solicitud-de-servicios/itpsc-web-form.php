@@ -5,6 +5,7 @@ function itpsc_form_func() {
 	$result = null;
 	$error = itpsc_form_validate_post();
 
+	$listado_tecnologias = itpip_get_listado_tecnologias();
 
 	if(!is_null($error) && count($error) == 0) {
 		$result = itpsc_form_save_post();
@@ -15,6 +16,9 @@ function itpsc_form_func() {
    
 	ob_start();
 	?> 
+
+		<link href="/wp-includes/css/magicsuggest.css" rel="stylesheet">
+		<script src="/wp-includes/js/magicsuggest.js"></script>
 
 		<link id="bsdp-css" href="<?php echo includes_url(); ?>css/bootstrap-datepicker3.css" rel="stylesheet">
 		<script src="<?php echo includes_url(); ?>js/bootstrap-datepicker.js"></script>
@@ -76,7 +80,7 @@ function itpsc_form_func() {
 
 			<div class="form-group <?php if(isset($error['tecnologias'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="tecnologias">Tecnologías o software a administrar, otros: (*)</label>
-				<input type="text" name="tecnologias" id="tecnologias" class="form-control" value="<?php if(isset($_POST['tecnologias'])) echo $_POST['tecnologias']; ?>">
+				<input type="text" name="tecnologias" id="tecnologias" class="form-control" value="" placeholder="Selecciona o agrega tus tecnologías">
 				<?php if(isset($error['tecnologias'])) { ?>
 				<span class="help-block"><?php echo $error['tecnologias']; ?></span>
 				<?php } ?>
@@ -184,6 +188,24 @@ function itpsc_form_func() {
 		});
 		</script>
 
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$(function() {
+				    var ms = $('#tecnologias').magicSuggest({
+				        data: <?php echo $listado_tecnologias; ?>
+				    });
+
+				    <?php 
+					if(isset($_POST['tecnologias'])) {
+						echo "ms.setValue(['" . implode("','", $_POST['tecnologias']) . "']);";
+					}
+					?>
+				});		
+
+			});
+		</script>
+
 	<?php
 	return ob_get_clean();
 }
@@ -191,6 +213,10 @@ function itpsc_form_func() {
 function itpsc_form_save_post() {
 
 	global $wpdb;
+
+	if( isset($_POST['tecnologias']) && is_array($_POST['tecnologias']) ) {
+		$_POST['tecnologias'] = implode(", ", $_POST['tecnologias']);
+	}
 
 	return $wpdb->insert('itpeople_solicitud_servicios', array(
 		'perfil' => $_POST['perfil'],
