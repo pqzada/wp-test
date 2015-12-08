@@ -151,10 +151,17 @@
 	$(document).ready(function() {
 
 		$(function() {
-		    $('#tecnologias').magicSuggest({
+		    var ms = $('#tecnologias').magicSuggest({
 		        data: <?php echo $listado_tecnologias; ?>
 		    });
-		});
+
+		    <?php 
+			if(isset($tecnologias)) {
+				$tparts = explode(", ", $tecnologias);			
+				echo "ms.setValue(['" . implode("','", $tparts) . "']);";
+			}
+			?>
+		});		
 
 	});
 </script>
