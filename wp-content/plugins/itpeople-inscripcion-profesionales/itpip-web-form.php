@@ -5,6 +5,8 @@ function itpip_form_func() {
 	$result = null;
 	$error = itpip_form_validate_post();
 
+	$listado_tecnologias = itpip_get_listado_tecnologias();
+
 
 	if(!is_null($error) && count($error) == 0) {
 		$result = itpip_form_save_post();
@@ -15,6 +17,9 @@ function itpip_form_func() {
    
 	ob_start();
 	?> 
+
+		<link href="/wp-includes/css/magicsuggest.css" rel="stylesheet">
+		<script src="/wp-includes/js/magicsuggest.js"></script>
 
 		<?php if(!is_null($result) && $result !== false) { ?>
 			<div class="alert alert-success alert-dismissible" role="alert">
@@ -78,7 +83,7 @@ function itpip_form_func() {
 			<div class="form-group <?php if(isset($error['tecnologias'])) {  echo "has-error"; } ?>">
 				<label class="control-label col-xs-3" for="tecnologias">Indicar tecnologías:</label>
 				<div class="col-xs-7">
-					<textarea class="form-control" name="tecnologias" id="tecnologias" rows="2"><?php if(isset($_POST['tecnologias'])) {  echo $_POST['tecnologias']; } ?></textarea>					
+					<input type="text" class="form-control input-sm" name="tecnologias" id="tecnologias" placeholder="Tecnologías" value="" />
 					<?php if(isset($error['tecnologias'])) { ?>
 					<span class="help-block"><?php echo $error['tecnologias']; ?></span>
 					<?php } ?>
@@ -132,6 +137,24 @@ function itpip_form_func() {
 
 		</form>
 
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$(function() {
+				    var ms = $('#tecnologias').magicSuggest({
+				        data: <?php echo $listado_tecnologias; ?>
+				    });
+
+				    <?php 
+					if(isset($_POST['tecnologias'])) {
+						echo "ms.setValue(['" . implode("','", $_POST['tecnologias']) . "']);";
+					}
+					?>
+				});		
+
+			});
+		</script>
+
 	<?php
 	return ob_get_clean();
 }
@@ -172,6 +195,10 @@ function itpip_form_save_post() {
 
 		return false;
 
+	}
+
+	if( isset($_POST['tecnologias']) && is_array($_POST['tecnologias']) ) {
+		$_POST['tecnologias'] = implode(", ", $_POST['tecnologias']);
 	}
 	
 	return $wpdb->insert('itpeople_profesional', array(
@@ -264,5 +291,21 @@ function itpip_form_validate_post() {
 	}
 
 }
+
+function itpip_get_listado_tecnologias() {
+
+		global $wpdb;
+
+		$sql = "SELECT * FROM itpeople_tecnologia ORDER BY nombre ASC";
+		$res = $wpdb->get_results($sql);
+
+		$listado = array();
+		foreach($res as $r) {
+			$listado[] = $r->nombre;
+		}
+
+		return "['" . implode("','", $listado) . "']";
+
+	}
 
 ?>
