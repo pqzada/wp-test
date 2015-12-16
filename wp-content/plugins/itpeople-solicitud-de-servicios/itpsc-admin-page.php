@@ -82,10 +82,10 @@ function itpsc_load_content() {
 
 ?>
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/wp-includes/datatables/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/wp-includes/datatables/jquery.dataTables.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="/wp-includes/datatables/jquery.dataTables.min.css">
 
 	<div class="wrap">
 	<h2>Solicitudes de servicio</h2>

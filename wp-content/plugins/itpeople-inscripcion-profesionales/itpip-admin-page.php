@@ -48,7 +48,7 @@ function itpip_load_detail($id) {
 					<td><a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a></td>
 				</tr>
 				<tr>
-					<td valign="top"><b>Estado</b></td>
+					<td valign="top"><b>Estado de atención</b></td>
 					<td>
 						<form method="POST" name="formEstado">
 							<input type="hidden" name="id" value="<?php echo $p->id; ?>">
@@ -62,13 +62,13 @@ function itpip_load_detail($id) {
 				</tr>
 				
 				<tr>
-					<td valign="top"><b>¿Ok?</b></td>
+					<td valign="top"><b>Estado de aprobación</b></td>
 					<td>
 						<form method="POST" name="formOk">
 							<input type="hidden" name="id" value="<?php echo $p->id; ?>">
 							<select name="ok" onchange="formOk.submit()">
-								<option value="0" <?php if($p->ok==0) echo "selected"; ?>>NOK</option>
-								<option value="1" <?php if($p->ok==1) echo "selected"; ?>>OK</option>
+								<option value="0" <?php if($p->ok==0) echo "selected"; ?>>Desaprobado</option>
+								<option value="1" <?php if($p->ok==1) echo "selected"; ?>>Aprobado</option>
 							</select>
 						</form>
 					</td>
@@ -91,18 +91,18 @@ function itpip_load_content() {
 
 ?>
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.0/js/dataTables.buttons.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.print.min.js"></script>
+	<script type="text/javascript" src="/wp-includes/datatables/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/wp-includes/datatables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/wp-includes/datatables/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="/wp-includes/datatables/buttons.print.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="/wp-includes/datatables/jquery.dataTables.min.css">
 
 	<div class="wrap">
 	<h2>Profesionales Inscritos</h2>
 
 	<form><div class="checkbox"><label><input type="checkbox" id="mostrarArchivados"> <b>Mostrar archivados</b></label></div></form>
-	<table id="profesionales" class="display table" cellspacing="0" width="100%">
+	<table id="profesionales2" class="display table table-condensed" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th>Cargo</th>
@@ -114,8 +114,8 @@ function itpip_load_content() {
 				<th>Disponibilidad</th>
 				<th>Renta líquida</th>
 				<th>CV</th>
-				<th>Estado</th>
-				<th>¿Ok?</th>
+				<th>Estado de atención</th>
+				<th>Estado de aprobación</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
@@ -139,9 +139,9 @@ function itpip_load_content() {
 					<td>
 						<?php
 							if($p->ok == 0) {
-								echo "NOK";
+								echo "Desaprobado";
 							} else {
-								echo "OK";
+								echo "Aprobado";
 							}
 						?>
 					</td>
@@ -169,7 +169,6 @@ function itpip_load_content() {
 			    function( settings, data, dataIndex ) {
 
 			    	var estado = data[9];
-			    	console.log(estado);
 
 			    	if($('#mostrarArchivados').is(':checked')) {
 			    		return true;
@@ -183,19 +182,12 @@ function itpip_load_content() {
 			    }
 			);
 
-		    var table = $('#profesionales').DataTable({
-		    	/*
-		    	"columnDefs": [
-		    		{
-		    			"targets": [ 1,3,6,7,8,9,10 ],
-		                "visible": false,
-		                "searchable": true
-		    		}
-		    	],
-		    	"ordering": false,
-		    	"paging": false,
-		    	"info": false,
-		    	"searching": false		 */   
+		    var table = $('#profesionales2').DataTable({
+		    			    	
+		    	ordering: true,
+		    	paging: true,
+		    	info: true,
+		    	searching: true,		    
 		    	stateSave: true,
 		    	dom: 'Blfrtip',
 		    	buttons: [
