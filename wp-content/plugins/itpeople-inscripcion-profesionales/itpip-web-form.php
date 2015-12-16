@@ -24,7 +24,7 @@ function itpip_form_func() {
 		<?php if(!is_null($result) && $result !== false) { ?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Listo!</strong> Hemos registrado tus datos.
+				Sus datos han sido registrados.
 			</div>
 		<?php } ?>
 
@@ -38,7 +38,7 @@ function itpip_form_func() {
 
 		<form method="POST" role="form" class="form form-horizontal" enctype="multipart/form-data">
 
-			<p>Completa el siguiente formulario con la información necesaria para registrar tu información</p>
+			<p>Completa el siguiente formulario para realizar tu inscripción profesional</p>
 
 			<div class="form-group <?php if(isset($error['cargo'])) {  echo "has-error"; } ?>">
 				<label class="control-label col-xs-3" for="cargo">Cargo o especialidad: (*)</label>
