@@ -93,7 +93,16 @@ function itpip_form_func() {
 			<div class="form-group <?php if(isset($error['anios_experiencia'])) {  echo "has-error"; } ?>">
 				<label class="control-label col-xs-3" for="anios_experiencia">Años de experiencia:</label>
 				<div class="col-xs-7">
-					<input type="text" name="anios_experiencia" id="anios_experiencia" class="form-control" value="<?php if(isset($_POST['anios_experiencia'])) echo $_POST['anios_experiencia']; ?>">
+					<select name="anios_experiencia" id="anios_experiencia" class="form-control">
+						<option value="">Seleccione</option>
+					<?php
+					for($i=0; $i<=60; $i++) {
+						echo '<option value="' . $i . '"';
+						if(isset($_POST['anios_experiencia']) && $_POST['anios_experiencia']==$i) echo ' selected';
+						echo '>' . $i . '</option>';
+					}
+					?>
+					</select>
 					<?php if(isset($error['anios_experiencia'])) { ?>
 					<span class="help-block"><?php echo $error['anios_experiencia']; ?></span>
 					<?php } ?>
@@ -199,6 +208,8 @@ function itpip_form_save_post() {
 
 	if( isset($_POST['tecnologias']) && is_array($_POST['tecnologias']) ) {
 		$_POST['tecnologias'] = implode(", ", $_POST['tecnologias']);
+	} else {
+		$_POST['tecnologias'] = '';
 	}
 	
 	return $wpdb->insert('itpeople_profesional', array(

@@ -45,7 +45,13 @@ function itpip_load_detail($id) {
 				</tr>
 				<tr>
 					<td valign="top"><b>Currículum Vitae</b></td>
-					<td><a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a></td>
+					<td>
+						<?php if($p->cv != '') { ?>
+						<a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a>
+						<?php } else { ?>
+						No ingresado
+						<?php } ?>
+					</td>
 				</tr>
 				<tr>
 					<td valign="top"><b>Estado de atención</b></td>
@@ -134,7 +140,13 @@ function itpip_load_content() {
 					<td><?php echo $p->anios_experiencia; ?></td>
 					<td><?php echo $p->disponibilidad; ?></td>
 					<td><?php echo $p->renta_liquida; ?></td>
-					<td><a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a></td>
+					<td>
+						<?php if($p->cv != '') { ?>
+						<a href="/private_files/<?php echo $p->cv; ?>" target="_blank">Descargar</a>
+						<?php } else { ?>
+						No ingresado
+						<?php } ?>
+					</td>
 					<td><?php echo $p->estado; ?></td>
 					<td>
 						<?php
