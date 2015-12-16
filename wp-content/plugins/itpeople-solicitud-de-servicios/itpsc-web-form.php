@@ -79,7 +79,7 @@ function itpsc_form_func() {
 			</div>		
 
 			<div class="form-group <?php if(isset($error['tecnologias'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="tecnologias">Tecnologías o software a administrar, otros: (*)</label>
+				<label class="control-label" for="tecnologias">Tecnologías o software a administrar, otros:</label>
 				<input type="text" name="tecnologias" id="tecnologias" class="form-control" value="" placeholder="Selecciona o agrega tus tecnologías">
 				<?php if(isset($error['tecnologias'])) { ?>
 				<span class="help-block"><?php echo $error['tecnologias']; ?></span>
@@ -87,7 +87,7 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['funciones'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="funciones">Funciones:</label>
+				<label class="control-label" for="funciones">Funciones: (*)</label>
 				<input type="text" name="funciones" id="funciones" class="form-control" value="<?php if(isset($_POST['funciones'])) echo $_POST['funciones']; ?>">
 				<?php if(isset($error['funciones'])) { ?>
 				<span class="help-block"><?php echo $error['funciones']; ?></span>
@@ -119,7 +119,7 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['formacion'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="formacion">Formación mínima:</label>
+				<label class="control-label" for="formacion">Formación mínima: (*)</label>
 				<input type="text" name="formacion" id="formacion" class="form-control" value="<?php if(isset($_POST['formacion'])) echo $_POST['formacion']; ?>">
 				<?php if(isset($error['formacion'])) { ?>
 				<span class="help-block"><?php echo $error['formacion']; ?></span>
@@ -128,7 +128,16 @@ function itpsc_form_func() {
 
 			<div class="form-group <?php if(isset($error['anios'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="anios">Años experiencia:</label>
-				<input type="text" name="anios" id="anios" class="form-control" value="<?php if(isset($_POST['anios'])) echo $_POST['anios']; ?>">
+				<select name="anios" id="anios" class="form-control">
+					<option value="">Seleccione</option>
+				<?php
+				for($i=0; $i<=60; $i++) {
+					echo '<option value="' . $i . '"';
+					if(isset($_POST['anios']) && $_POST['anios']==$i) echo ' selected';
+					echo '>' . $i . '</option>';
+				}
+				?>
+				</select>
 				<?php if(isset($error['anios'])) { ?>
 				<span class="help-block"><?php echo $error['anios']; ?></span>
 				<?php } ?>
@@ -159,7 +168,7 @@ function itpsc_form_func() {
 			</div>
 
 			<div class="form-group <?php if(isset($error['liquido_ofrece'])) {  echo "has-error"; } ?>">
-				<label class="control-label" for="liquido_ofrece">Ingresos líquidos a ofrecer: (*)</label>
+				<label class="control-label" for="liquido_ofrece">Ingresos líquidos a ofrecer:</label>
 				<input type="text" name="liquido_ofrece" id="liquido_ofrece" class="form-control" value="<?php if(isset($_POST['liquido_ofrece'])) echo $_POST['liquido_ofrece']; ?>">
 				<?php if(isset($error['liquido_ofrece'])) { ?>
 				<span class="help-block"><?php echo $error['liquido_ofrece']; ?></span>
@@ -216,6 +225,8 @@ function itpsc_form_save_post() {
 
 	if( isset($_POST['tecnologias']) && is_array($_POST['tecnologias']) ) {
 		$_POST['tecnologias'] = implode(", ", $_POST['tecnologias']);
+	} else {
+		$_POST['tecnologias'] = '';
 	}
 
 	return $wpdb->insert('itpeople_solicitud_servicios', array(
@@ -258,9 +269,10 @@ function itpsc_form_validate_post() {
 	    	$error['ofrece'] = "Debes ingresar que se ofrece";
 	    }
 
+	    /*
 	    if($_POST['tecnologias'] == "") {
 	    	$error['tecnologias'] = "Debes ingresar alguna tecnología o software a administrar";
-	    }
+	    }*/
 
 	    if($_POST['funciones'] == "") {
 	    	$error['funciones'] = "Debes ingresar alguna función";
@@ -274,21 +286,23 @@ function itpsc_form_validate_post() {
 	    	}
 	    }
 
+	    /*
 	    if($_POST['disponibilidad'] == "") {
 	    	$error['disponibilidad'] = "Debes ingresar la disponibilidad";
 	    } else {
 	    	if(strlen($_POST['disponibilidad']) >= 100) {
 	    		$error['disponibilidad'] = "Ingresa máximo 100 caracteres";
 	    	}
-	    }
+	    }*/
 
-	    if($_POST['fecha_ingreso'] == "") {
+	    if($_POST['fecha_ingreso'] != "") {
 	    	$d = DateTime::createFromFormat('Y-m-d', $_POST['fecha_ingreso']);
     		if( !($d && $d->format('Y-m-d') == $_POST['fecha_ingreso']) ) {
     			$error['fecha_ingreso'] = "Formato de fecha incorrecto";
     		}	    	
 	    }
 
+	    
 	    if($_POST['formacion'] == "") {
 	    	$error['formacion'] = "Debes ingresar la formación mínima ";
 	    } else {
@@ -297,21 +311,23 @@ function itpsc_form_validate_post() {
 	    	}
 	    }
 
+	    /*
 	    if($_POST['anios'] == "") {
 	    	$error['anios'] = "Debes ingresar los años de experiencia esperados ";
 	    } else {
 	    	if(strlen($_POST['anios']) >= 100) {
 	    		$error['anios'] = "Ingresa máximo 100 caracteres";
 	    	}
-	    }
+	    }*/
 
+	    /*
 	    if($_POST['nivel_profesional'] == "") {
 	    	$error['nivel_profesional'] = "Debes ingresar el nivel de profesional";
 	    } else {
 	    	if(strlen($_POST['nivel_profesional']) >= 100) {
 	    		$error['nivel_profesional'] = "Ingresa máximo 100 caracteres";
 	    	}
-	    }
+	    }*/
 
 	    if($_POST['tipo_contrato'] == "") {
 	    	$error['tipo_contrato'] = "Debes ingresar el tipo de contrato y su duración";
@@ -321,21 +337,23 @@ function itpsc_form_validate_post() {
 	    	}
 	    }
 
+	    /*
 	    if($_POST['jornada'] == "") {
 	    	$error['jornada'] = "Debes ingresar el tipo de jornada ";
 	    } else {
 	    	if(strlen($_POST['jornada']) >= 100) {
 	    		$error['jornada'] = "Ingresa máximo 100 caracteres";
 	    	}
-	    }
+	    }*/
 
+	    /*
 	    if($_POST['liquido_ofrece'] == "") {
 	    	$error['liquido_ofrece'] = "Debes ingresar un monto líquido a ofrecer";
 	    } else {
 	    	if(strlen($_POST['liquido_ofrece']) >= 100) {
 	    		$error['liquido_ofrece'] = "Ingresa máximo 100 caracteres";
 	    	}
-	    }
+	    }*/
 
 	    if($_POST['contacto'] == "") {
 	    	$error['contacto'] = "Debes ingresar un contacto para este requerimiento";
