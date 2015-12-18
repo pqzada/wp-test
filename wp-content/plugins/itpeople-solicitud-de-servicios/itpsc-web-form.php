@@ -45,7 +45,7 @@ function itpsc_form_func() {
 
 			<div class="form-group <?php if(isset($error['tipo'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="tipo">Tipo de solicitud: (*)</label>
-				<select name="tipo" class="form-control" id="tipo">
+				<select name="tipo" class="form-control" id="tipo" onchange="mostrarVariables()">
 					<option value="">Seleccione</option>
 					<option value="Servicios / Proyectos / Gestión Subcontractors" <?php if(isset($_POST['tipo']) && $_POST['tipo'] == "Servicios / Proyectos / Gestión Subcontractors") {  echo "selected"; } ?>>
 						Servicios / Proyectos / Gestión Subcontractors
@@ -62,7 +62,7 @@ function itpsc_form_func() {
 				<?php } ?>
 			</div>	
 
-			<div class="form-group <?php if(isset($error['perfil'])) {  echo "has-error"; } ?>">
+			<div id="group-perfil" class="form-group variables <?php if(isset($error['perfil'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="perfil">Perfil del candidato requerido: (*)</label>
 				<textarea class="form-control" name="perfil" id="perfil" rows="2"><?php if(isset($_POST['perfil'])) {  echo $_POST['perfil']; } ?></textarea>
 				<?php if(isset($error['perfil'])) {  ?>
@@ -70,13 +70,37 @@ function itpsc_form_func() {
 				<?php } ?>
 			</div>		
 
-			<div class="form-group <?php if(isset($error['ofrece'])) {  echo "has-error"; } ?>">
+			<div id="group-ofrece" class="form-group variables <?php if(isset($error['ofrece'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="ofrece">Se ofrece: (*)</label>
 				<textarea class="form-control" name="ofrece" id="ofrece" rows="2"><?php if(isset($_POST['ofrece'])) {  echo $_POST['ofrece']; } ?></textarea>
 				<?php if(isset($error['ofrece'])) { ?>
 				<span class="help-block"><?php echo $error['ofrece']; ?></span>
 				<?php } ?>
 			</div>		
+
+			<div id="group-causal" class="form-group variables <?php if(isset($error['causal'])) {  echo "has-error"; } ?>">
+				<label class="control-label" for="causal">Causal de contratación: (*)</label>
+				<textarea class="form-control" name="causal" id="causal" rows="2"><?php if(isset($_POST['causal'])) {  echo $_POST['causal']; } ?></textarea>
+				<?php if(isset($error['causal'])) {  ?>
+				<span class="help-block"><?php echo $error['causal']; ?></span>
+				<?php } ?>
+			</div>				
+
+			<div id="group-tipologia" class="form-group variables <?php if(isset($error['tipologia'])) {  echo "has-error"; } ?>">
+				<label class="control-label" for="tipologia">Tipología del servicio, Área (como: Área administración, soporte contable): (*)</label>
+				<textarea class="form-control" name="tipologia" id="tipologia" rows="2"><?php if(isset($_POST['tipologia'])) {  echo $_POST['tipologia']; } ?></textarea>
+				<?php if(isset($error['tipologia'])) {  ?>
+				<span class="help-block"><?php echo $error['tipologia']; ?></span>
+				<?php } ?>
+			</div>	
+
+			<div id="group-definiciones" class="form-group variables <?php if(isset($error['definiciones'])) {  echo "has-error"; } ?>">
+				<label class="control-label" for="definiciones">Definiciones, terminología que asegure entendimiento en la descripción de servicios: (*)</label>
+				<textarea class="form-control" name="definiciones" id="definiciones" rows="2"><?php if(isset($_POST['definiciones'])) {  echo $_POST['definiciones']; } ?></textarea>
+				<?php if(isset($error['definiciones'])) {  ?>
+				<span class="help-block"><?php echo $error['definiciones']; ?></span>
+				<?php } ?>
+			</div>	
 
 			<div class="form-group <?php if(isset($error['tecnologias'])) {  echo "has-error"; } ?>">
 				<label class="control-label" for="tecnologias">Tecnologías o software a administrar, otros:</label>
@@ -198,6 +222,39 @@ function itpsc_form_func() {
 		</script>
 
 		<script type="text/javascript">
+
+			function mostrarVariables() {
+
+				var tipo = $('#tipo').val();
+
+				if(tipo == 'Servicios / Proyectos / Gestión Subcontractors') {
+
+					$('.variables').hide();
+					$('#group-tipologia').show();
+					$('#group-definiciones').show();
+
+				} else if(tipo == 'Trabajadores Transitorios') {
+
+					$('.variables').hide();
+					$('#group-perfil').show();
+					$('#group-causal').show();
+
+
+				}  else if(tipo == 'Contratación Directa') {
+
+					$('.variables').hide();
+					$('#group-perfil').show();
+					$('#group-ofrece').show();
+
+				} else {
+
+					$('.variables').hide();
+
+				}
+
+			}
+
+
 			$(document).ready(function() {
 
 				$(function() {
@@ -210,7 +267,9 @@ function itpsc_form_func() {
 						echo "ms.setValue(['" . implode("','", $_POST['tecnologias']) . "']);";
 					}
 					?>
-				});		
+				});	
+
+				mostrarVariables();	
 
 			});
 		</script>
@@ -232,6 +291,9 @@ function itpsc_form_save_post() {
 	return $wpdb->insert('itpeople_solicitud_servicios', array(
 		'perfil' => $_POST['perfil'],
 		'ofrece' => $_POST['ofrece'],
+		'causal' => $_POST['causal'],
+		'tipologia' => $_POST['tipologia'],
+		'definiciones' => $_POST['definiciones'],
 		'tecnologias' => $_POST['tecnologias'],
 		'funciones' => $_POST['funciones'],
 		'lugar_trabajo' => $_POST['lugar_trabajo'],
@@ -250,6 +312,21 @@ function itpsc_form_save_post() {
 
 }
 
+function itpsc_get_tipo_id($tipo) {
+
+	if( str_replace("Subcontractors", "", $tipo) != $tipo ) {
+		return 1;
+	} elseif( str_replace("Transitorios", "", $tipo) != $tipo ) {
+		return 2;
+	} elseif( str_replace("Directa", "", $tipo) != $tipo ) {
+		return 3;
+	} else {
+		return null;
+	}
+
+
+}
+
 function itpsc_form_validate_post() {
 
 	$error = array();
@@ -258,16 +335,55 @@ function itpsc_form_validate_post() {
 
 
 		if($_POST['tipo'] == "") {
+
 			$error['tipo'] = "Debes seleccionar un tipo de servicio";
-		}
 
-		if($_POST['perfil'] == "") {
-			$error['perfil'] = "Debes ingresar un perfil";
-		}
+		} else {
 
-	    if($_POST['ofrece'] == "") {
-	    	$error['ofrece'] = "Debes ingresar que se ofrece";
-	    }
+			$tipo = itpsc_get_tipo_id($_POST['tipo']);
+
+			if( !is_null($tipo) ) {
+
+				if( $tipo == 1 ) {
+
+					if($_POST['tipologia'] == "") {
+						$error['tipologia'] = "Debes ingresar una tipología";
+					}
+
+				    if($_POST['definiciones'] == "") {
+				    	$error['definiciones'] = "Debes ingresar alguna definición";
+				    }
+
+				} elseif( $tipo == 2 ) {
+
+					if($_POST['perfil'] == "") {
+						$error['perfil'] = "Debes ingresar un perfil";
+					}
+
+				    if($_POST['causal'] == "") {
+				    	$error['causal'] = "Debes ingresar alguna causal";
+				    }
+
+				} elseif( $tipo == 3) {
+
+					if($_POST['perfil'] == "") {
+						$error['perfil'] = "Debes ingresar un perfil";
+					}
+
+				    if($_POST['ofrece'] == "") {
+				    	$error['ofrece'] = "Debes ingresar que se ofrece";
+				    }
+
+				}
+
+			} else {
+
+				$error['tipo'] = "Tipo de servicio incorrecto";
+
+			}
+
+			
+		}
 
 	    /*
 	    if($_POST['tecnologias'] == "") {

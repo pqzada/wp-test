@@ -11,13 +11,39 @@ function itpsc_load_detail($id) {
 	<div class="col-xs-10">
 		<table class="table table-striped display" cellspacing="0" width="100%">
 			<tr>
-				<td valign="top"><b>Perfil</b></td>
-				<td><?php echo $s->perfil; ?></td>
+				<td valign="top"><b>Tipo</b></td>
+				<td><?php echo $s->tipo; ?></td>
 			</tr>
-			<tr>
-				<td valign="top"><b>Se ofrece</b></td>
-				<td><?php echo $s->ofrece; ?></td>
-			</tr>
+			<?php if($s->tipo == 'Contratación Directa') { ?>
+				<tr>
+					<td valign="top"><b>Perfil</b></td>
+					<td><?php echo $s->perfil; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Se ofrece</b></td>
+					<td><?php echo $s->ofrece; ?></td>
+				</tr>
+			<?php } ?>
+			<?php if($s->tipo == 'Trabajadores Transitorios') { ?>
+				<tr>
+					<td valign="top"><b>Perfil</b></td>
+					<td><?php echo $s->perfil; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Causal de contratación</b></td>
+					<td><?php echo $s->causal; ?></td>
+				</tr>
+			<?php } ?>
+			<?php if($s->tipo == 'Servicios / Proyectos / Gestión Subcontractors') { ?>
+				<tr>
+					<td valign="top"><b>Tipología de servicio</b></td>
+					<td><?php echo $s->tipologia; ?></td>
+				</tr>
+				<tr>
+					<td valign="top"><b>Definiciones</b></td>
+					<td><?php echo $s->definiciones; ?></td>
+				</tr>
+			<?php } ?>
 			<tr>
 				<td valign="top"><b>Tecnologías</b></td>
 				<td><?php echo $s->tecnologias; ?></td>
@@ -96,6 +122,9 @@ function itpsc_load_content() {
 				<th>Tipo</th>
 				<th>Perfil</th>
 				<th>Se ofrece</th>
+				<th>Causal de contratación</th>
+				<th>Tipología de servicio</th>
+				<th>Definiciones</th>
 				<th>Tecnologías</th>
 				<th>Funciones</th>
 				<th>Lugar de trabajo</th>
@@ -121,6 +150,9 @@ function itpsc_load_content() {
 					<td><?php echo $s->tipo; ?></td>
 					<td><?php echo $s->perfil; ?></td>
 					<td><?php echo $s->ofrece; ?></td>
+					<td><?php echo $s->causal; ?></td>
+					<td><?php echo $s->tipologia; ?></td>
+					<td><?php echo $s->definiciones; ?></td>
 					<td><?php echo $s->tecnologias; ?></td>
 					<td><?php echo $s->funciones; ?></td>
 					<td><?php echo $s->lugar_trabajo; ?></td>
@@ -155,7 +187,7 @@ function itpsc_load_content() {
 		    $('#solicitudes').DataTable({
 		    	"columnDefs": [
 		    		{
-		    			"targets": [ 2,4,7,8,9,10,11,12 ],
+		    			"targets": [ 1, 2, 3, 4, 5, 8, 10, 13, 15, 16 ],
 		                "visible": false,
 		                "searchable": true
 		    		}
