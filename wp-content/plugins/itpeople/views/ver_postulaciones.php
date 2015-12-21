@@ -42,13 +42,7 @@ tr.aprobado {
 			</a>
 			<?php } ?>
 
-			<h5 id="resumen">
-				Resumen: 
-				<?php echo $leidos; ?> leído<?php if($leidos != "1") echo "s"; ?>, 
-				<?php echo $no_leidos; ?> no leído<?php if($no_leidos != "1") echo "s"; ?>, 
-				<?php echo $aprobados; ?> aprobado<?php if($aprobados != "1") echo "s"; ?> y 
-				<?php echo $no_aprobados; ?> no aprobado<?php if($no_aprobados != "1") echo "s"; ?>, 
-			</h5>
+			<h5 id="resumen"></h5>
 
 			<table class="table table-condensed table-hover display" width="100%" id="postulaciones" datatable="">
 				<thead>
@@ -112,6 +106,8 @@ tr.aprobado {
 </div>
 
 <script type="text/javascript">
+
+	actualizarResumen();
 
 	function actualizarResumen() {
 

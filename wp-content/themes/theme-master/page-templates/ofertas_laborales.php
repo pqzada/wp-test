@@ -8,7 +8,7 @@ Template Name: Ofertas Laborales
 		<div class="container page">
 			<div class="hidden-xs hidden-sm hidden-md col-lg-4"></div>
 			<div class="col-xs-12">
-				<center><h2>Ofertas de empleo destacadas</h2></center>
+				<center><h2>Ofertas de Empleos</h2></center>
 			</div>
 		</div>
 

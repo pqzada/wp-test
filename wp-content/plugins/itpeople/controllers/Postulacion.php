@@ -458,6 +458,9 @@
 
 			global $wpdb; 
 
+			$sql = "SELECT count(*) FROM tb_postulaciones_itpeople WHERE eliminado = 1 AND id_oferta = " . $_REQUEST['id'];
+			$eliminados = $wpdb->get_var($sql);
+
 			$sql = "SELECT * FROM tb_postulaciones_itpeople WHERE eliminado = 0 AND id_oferta = " . $_REQUEST['id'];
 			$postulaciones = $wpdb->get_results($sql);
 
@@ -488,9 +491,11 @@
 			$resumen .= $no_leidos . " no leído";
 			$resumen .= ($no_leidos != "1") ? "s, ":", ";
 			$resumen .= $aprobados . " aprobado";
-			$resumen .= ($aprobados != "1") ? "s y ":" y ";
+			$resumen .= ($aprobados != "1") ? "s, ":", ";
 			$resumen .= $no_aprobados . " no aprobado";
-			$resumen .= ($no_aprobados != "1") ? "s.":".";
+			$resumen .= ($no_aprobados != "1") ? "s y ":" y ";
+			$resumen .= $eliminados . " eliminado";
+			$resumen .= ($eliminados != "1") ? "s.":".";
 			$resumen .= "XRESUMENX";
 
 			echo $resumen;
