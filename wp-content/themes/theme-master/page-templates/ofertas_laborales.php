@@ -5,14 +5,14 @@ Template Name: Ofertas Laborales
 ?>
 
 <?php get_header(); ?>
-		<div class="container page">
+		<div class="container page ofertas-laborales">
 			<div class="hidden-xs hidden-sm hidden-md col-lg-4"></div>
 			<div class="col-xs-12">
 				<center><h2>Ofertas de Empleos</h2></center>
 			</div>
 		</div>
 
-		<section id="contenido" class="container margin-up-down">
+		<section id="contenido" class="container margin-up-down ofertas-laborales">
 			<div id="home" class="col-xs-12">
 			 	<?php the_post_thumbnail( '', array( 'class' => 'img-responsive' ) ); ?>
 				<?php

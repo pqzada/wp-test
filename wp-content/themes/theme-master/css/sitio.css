@@ -533,6 +533,35 @@
       margin-left: -5%;
   }
 
+  /* Ofertas laborales */
+  .ofertas-laborales h2{
+    margin: 0px;
+  }
+
+  .ofertas-laborales {
+      margin: 0px;
+      width: 100%;
+      padding: 0px;
+  }
+
+  .ofertas-laborales .row {
+      margin-right: 0px !important;
+      padding: 5px 0px;
+  }
+
+  .ofertas-laborales .col-xs-7, .ofertas-laborales .col-xs-5 {
+      width: 100%;
+  }
+
+  .ofertas-laborales .col-xs-5 {
+      width: 100%;
+  }
+
+  .ofertas-laborales .col-xs-5.formacion {
+      font-size: 12px;
+  }
+
+
 }
 
 .variables {
