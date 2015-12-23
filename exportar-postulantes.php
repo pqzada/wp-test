@@ -24,7 +24,7 @@ foreach($postulaciones as $p) {
 }
 
 download_send_headers("postulantes_" . $_REQUEST['id'] . ".csv");
-echo array2csv($rows);
+echo utf8_decode(array2csv($rows));
 
 function download_send_headers($filename) {
     // disable caching
@@ -52,9 +52,9 @@ function array2csv(array &$array) {
 	ob_start();
 
 	$df = fopen("php://output", 'w');
-	fputcsv($df, array_keys(reset($array)));
+	fputcsv($df, array_keys(reset($array)), ";");
 	foreach ($array as $row) {
-		fputcsv($df, $row);
+		fputcsv($df, $row, ";");
 	}
 
 	fclose($df);
