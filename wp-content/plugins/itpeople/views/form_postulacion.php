@@ -76,56 +76,62 @@
 					<?php endif ?>
 
 					<div class="form-group">
-						<label for="nombre" class="col-sm-3 control-label">Nombre</label>
+						<label for="nombre" class="col-sm-3 control-label">Nombre (*)</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control input-sm" name="postulacion[nombre]" id="nombre" placeholder="Nombre" value="<?php echo $nombre ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="email" class="col-sm-3 control-label">E-Mail</label>
+						<label for="email" class="col-sm-3 control-label">E-mail (*)</label>
 						<div class="col-sm-9">
 							<input type="email" class="form-control input-sm" name="postulacion[email]" id="email" placeholder="E-Mail" value="<?php echo $email ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="telefono" class="col-sm-3 control-label">Teléfono</label>
+						<label for="telefono" class="col-sm-3 control-label">Teléfono (*)</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control input-sm" name="postulacion[telefono]" id="telefono" placeholder="Teléfono" value="<?php echo $telefono ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="tecnologias" class="col-sm-3 control-label">Tecnologías</label>
+						<label for="tecnologias" class="col-sm-3 control-label">Tecnologías (*)</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control input-sm" name="postulacion[tecnologias]" id="tecnologias" placeholder="Tecnologías" value="" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="anios_experiencia" class="col-sm-3 control-label">Años Experiencia</label>
+						<label for="anios_experiencia" class="col-sm-3 control-label">Años Experiencia (*)</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control input-sm" name="postulacion[anios_experiencia]" id="anios_experiencia" placeholder="Años Experiencia" value="<?php echo $anios_experiencia ?>" />
+							<!--<input type="text" class="form-control input-sm" name="postulacion[anios_experiencia]" id="anios_experiencia" placeholder="Años Experiencia" value="<?php echo $anios_experiencia ?>" />-->
+							<select class="form-control input-sm" name="postulacion[anios_experiencia]" id="anios_experiencia">
+								<option value="">Seleccione</option>
+							<?php for($i=0; $i<=60; $i++) { ?>
+								<option value="<?php echo $i; ?>" <?php if(isset($anios_experiencia) && $anios_experiencia==$i) { echo "selected"; } ?>><?php echo $i; ?></option>
+							<?php	} ?>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="disponibilidad" class="col-sm-3 control-label">Disponibilidad</label>
+						<label for="disponibilidad" class="col-sm-3 control-label">Disponibilidad (*)</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control input-sm" name="postulacion[disponibilidad]" id="disponibilidad" placeholder="Disponibilidad" value="<?php echo $disponibilidad ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="renta_liquida" class="col-sm-3 control-label">Renta Liquida</label>
+						<label for="renta_liquida" class="col-sm-3 control-label">Renta Liquida (*)</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control input-sm" name="postulacion[renta_liquida]" id="renta_liquida" placeholder="Renta Liquida" value="<?php echo $renta_liquida ?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="curriculum" class="col-sm-3 control-label">Curriculum <small>[Word, Pdf]</small></label>
+						<label for="curriculum" class="col-sm-3 control-label">Curriculum (*) <small>[Word, Pdf]</small></label>
 						<div class="col-sm-9">
 							<input type="file" name="curriculum" id="curriculum">
 						</div>

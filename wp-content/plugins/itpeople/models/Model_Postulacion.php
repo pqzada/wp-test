@@ -119,7 +119,7 @@
 				'tecnologias'          => array(
 					'label' => 'Tecnologías',
 					'type'=>'string',
-					'required'=>false,
+					'required'=>true,
 					'min'=>0,
 					'max'=>255,
 					'trim'=>true

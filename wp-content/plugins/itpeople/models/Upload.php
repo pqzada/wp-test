@@ -478,7 +478,7 @@ class Upload {
 		if (!$this->check_file_array($file)) {
 
 			//file not selected or some bigger problems (broken files array)
-			$this->set_error(__('No se ingresado un archivo o se encuntra vacío'));
+			$this->set_error(__('No se ingresado un archivo o se encuentra vacío'));
 
 		}
 
